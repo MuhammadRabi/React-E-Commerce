@@ -1,3 +1,4 @@
+import CartContainer from "./Components/CartContainer"
 import Header from "./Components/UI/Header"
 import Layout from "./Components/UI/Layout"
 
@@ -6,9 +7,7 @@ function App() {
     <>
       <Header />
       <Layout>
-        <div>
-          <h2 className="text-red-500 text-3xl">cart-container</h2>
-        </div>
+        <CartContainer />
       </Layout>
     </>
   )
