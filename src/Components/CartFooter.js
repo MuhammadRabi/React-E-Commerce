@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { clearCart } from "../Features/cartSlice"
+import { openModal } from "../Features/modalSlice"
 const CartFooter = () => {
   const { total, items } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
@@ -13,7 +13,7 @@ const CartFooter = () => {
         {items.length >= 1 && (
           <button
             className="block mt-5 mx-auto px-6 py-0.5 text-md capitalize font-bold text-red-800 hover:text-white hover:bg-red-800 border-2 border-red-800 rounded-sm duration-200"
-            onClick={() => dispatch(clearCart())}
+            onClick={() => dispatch(openModal())}
           >
             clear cart
           </button>

@@ -4,7 +4,7 @@ import cartItemsData from "../cartItemsData"
 const initialState = {
   items: cartItemsData,
   amount: 4,
-  total: 1500,
+  total: 0,
 }
 
 const cartSlice = createSlice({
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
       )
       selectedItem.amount -= 1
     },
-    calculateTotalPrice: (state, action) => {
+    calculateTotalPrice: (state) => {
       let amount = 0
       let total = 0
       state.items.forEach((item) => {

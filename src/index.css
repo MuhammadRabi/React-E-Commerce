@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components{
+    .modal-btn{
+    @apply  px-4 py-0.5 text-xl font-semibold capitalize border-2 rounded-md duration-700 border-red-700 hover:text-white hover:bg-red-700 
+    }
+}

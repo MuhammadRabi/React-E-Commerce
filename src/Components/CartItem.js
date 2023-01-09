@@ -5,7 +5,7 @@ const CartItem = ({ id, title, price, amount }) => {
   const dispatch = useDispatch()
 
   return (
-    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50 duration-200 px-8 py-1.5  rounded-md">
+    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50 transition-all duration-700 px-8 py-1.5  rounded-md">
       <div className="product-info">
         <p className="capitalize">{title}</p>
         <p className="text-sm text-gray-500 font-bold -mb-1">${price}</p>
