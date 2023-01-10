@@ -1,7 +1,7 @@
-import { useEffect } from "react"
 import CartFooter from "./CartFooter"
-import { calculateTotalPrice } from "../Features/cartSlice"
 import CartItem from "./CartItem"
+import { useEffect } from "react"
+import { calculateTotalPrice } from "../Features/cartSlice"
 import { useSelector, useDispatch } from "react-redux"
 import Modal from "./UI/Modal"
 
@@ -12,6 +12,7 @@ const CartContainer = () => {
   useEffect(() => {
     dispatch(calculateTotalPrice())
   }, [items, dispatch])
+
   return (
     <>
       <section className="relative rounded-md mx-auto p-4 bg-slate-200 w-full max-w-sm md:max-w-lg md:p-8">

@@ -1,12 +1,14 @@
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
 import { useDispatch } from "react-redux"
 import { removeItem, increase, decrease } from "../Features/cartSlice"
-const CartItem = ({ id, title, price, amount }) => {
+
+const CartItem = ({ id, title, price, amount: itemAmount, img }) => {
   const dispatch = useDispatch()
 
   return (
-    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50 transition-all duration-700 px-8 py-1.5  rounded-md">
-      <div className="product-info">
+    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50  px-8 py-1.5  rounded-md">
+      <img src={img} alt="" className="w-12 h-12" />
+      <div className="product-info flex-1 ml-8">
         <p className="capitalize">{title}</p>
         <p className="text-sm text-gray-500 font-bold -mb-1">${price}</p>
         <span
@@ -24,12 +26,12 @@ const CartItem = ({ id, title, price, amount }) => {
           <FiPlusSquare />
         </span>
         <span className="text-slate-800 w-6 h-6 rounded-sm flex items-center justify-center border-2 border-gray-300">
-          {amount}
+          {itemAmount}
         </span>
         <span
           className="text-red-500 hover:text-red-600 text-[28px] cursor-pointer duration-500"
           onClick={() => {
-            if (amount === 1) {
+            if (itemAmount === 1) {
               dispatch(removeItem(id))
             }
             dispatch(decrease(id))
