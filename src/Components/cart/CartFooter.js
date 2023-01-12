@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from "react-redux"
-import { openModal } from "../Features/modalSlice"
+import { openModal } from "../../Features/modalSlice"
+
 const CartFooter = () => {
-  const { total, items } = useSelector((state) => state.cart)
+  const { totalPrice, items } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
+
   return (
     <>
       <section className="mt-5 pt-3 px-4 border-t-2 border-red-800 text-xl">
         <div className="flex items-center justify-between">
           <span>Total</span>
-          <span>${total.toFixed(2)}</span>
+          <span>${totalPrice}</span>
         </div>
         {items.length >= 1 && (
           <button
