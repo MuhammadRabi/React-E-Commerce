@@ -2,15 +2,17 @@ import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
 import { useDispatch } from "react-redux"
 import { removeItem, increase, decrease } from "../../Features/cartSlice"
 
-const CartItem = ({ id, title, price, amount, img }) => {
+const CartItem = ({ id, title, price, amount, images }) => {
   const dispatch = useDispatch()
 
   return (
-    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50  px-8 py-1.5  rounded-md">
-      <img src={img} alt="" className="w-12 h-12" />
-      <div className="product-info flex-1 ml-8">
+    <article className="flex items-center justify-between text-xl mt-3 bg-white hover:bg-gray-50 px-4 sm:px-8 py-1.5 rounded-md">
+      <img src={images[3]} alt="" className="w-12 h-12" />
+      <div className="product-info flex-1 ml-4 sm:ml-8">
         <p className="capitalize">{title}</p>
-        <p className="text-sm text-gray-500 font-bold -mb-1">${price}</p>
+        <p className="text-sm text-gray-500 font-bold -mb-1">
+          ${price.toFixed(2)}
+        </p>
         <span
           className="text-sm capitalize cursor-pointer font-semibold text-red-600 hover:text-red-700 duration-500"
           onClick={() => dispatch(removeItem(id))}
