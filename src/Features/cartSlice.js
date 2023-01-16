@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addToLocalStorage, getFromLocalStorage } from "../localStorage"
+import { getFromLocalStorage } from "../localStorage"
 
 const initialState = {
   items: getFromLocalStorage(),
@@ -14,8 +14,6 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = []
       state.amount = 0
-      state.totalPrice = 0
-      addToLocalStorage(state.items)
     },
 
     addProduct: (state, action) => {
@@ -30,14 +28,12 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, amount: 1 })
       }
-      addToLocalStorage(state.items)
     },
 
     removeItem: (state, action) => {
       const itemId = action.payload
       const newItemList = state.items.filter((item) => item.id !== itemId)
       state.items = newItemList
-      addToLocalStorage(state.items)
     },
 
     increase: (state, action) => {
@@ -45,7 +41,6 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload
       )
       selectedItem.amount += 1
-      addToLocalStorage(state.items)
     },
 
     decrease: (state, action) => {
@@ -53,7 +48,6 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload
       )
       selectedItem.amount -= 1
-      addToLocalStorage(state.items)
     },
 
     // calculate total price function

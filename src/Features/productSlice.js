@@ -4,7 +4,7 @@ const url = "https://dummyjson.com/products/?limit=100&"
 
 const initialState = {
   products: [],
-  isloading: false,
+  isLoading: true,
 }
 
 export const getProducts = createAsyncThunk(
@@ -15,7 +15,6 @@ export const getProducts = createAsyncThunk(
       const data = await res.json()
       return data
     } catch (error) {
-      console.log(error)
       return thunkApi.rejectWithValue("there is some error!")
     }
   }
@@ -26,17 +25,16 @@ const productSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getProducts.pending, (state) => {
+        state.isLoading = true
+      })
       .addCase(getProducts.fulfilled, (state, action) => {
         state.products = action.payload.products
+        state.isLoading = false
         console.log(action.payload.products)
       })
-      .addCase(getProducts.pending, (state) => {
-        console.log("pending")
-        state.isloading = true
-      })
       .addCase(getProducts.rejected, (state) => {
-        console.log("is rejected")
-        state.isloading = true
+        state.isLoading = false
       })
   },
 })
