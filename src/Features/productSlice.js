@@ -5,6 +5,8 @@ const url = "https://dummyjson.com/products/?limit=100&"
 const initialState = {
   products: [],
   isLoading: true,
+  filteredProducts: [],
+  sort: "name-a",
 }
 
 export const getProducts = createAsyncThunk(
@@ -23,6 +25,31 @@ export const getProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: "products",
   initialState,
+  reducers: {
+    updateSort: (state, action) => {
+      state.sort = action.payload
+
+      let tempProducts = [...state.products]
+
+      if (state.sort === "price-lowest") {
+        tempProducts = state.products.sort((a, b) => {
+          return a.price - b.price
+        })
+      } else if (state.sort === "price-highest") {
+        tempProducts = state.products.sort((a, b) => {
+          return b.price - a.price
+        })
+      } else if (state.sort === "name-a") {
+        tempProducts = state.products.sort((a, b) => {
+          return a.title.localeCompare(b.title)
+        })
+      } else if (state.sort === "name-z") {
+        tempProducts = state.products.sort((a, b) => {
+          return b.title.localeCompare(a.title)
+        })
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getProducts.pending, (state) => {
@@ -38,5 +65,7 @@ const productSlice = createSlice({
       })
   },
 })
+
+export const { updateSort } = productSlice.actions
 
 export default productSlice.reducer

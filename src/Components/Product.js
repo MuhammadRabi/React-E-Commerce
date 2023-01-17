@@ -22,7 +22,7 @@ const Product = ({ id, title, price, images, description }) => {
       </figure>
       <div className="flex text-center w-full mt-6">
         <button
-          className="mx-auto py-1 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-600 duration-300"
+          className="mx-auto py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
           onClick={() => {
             dispatch(addProduct({ id, title, price, images }))
           }}
