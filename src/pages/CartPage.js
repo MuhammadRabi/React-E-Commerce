@@ -1,6 +1,6 @@
-import CartContainer from "../Components/cart/CartContainer"
+import CartContainer from "../components/cart/CartContainer"
 import { useSelector } from "react-redux"
-import GoHome from "../Components/UI/GoHome"
+import GoHome from "../components/UI/GoHome"
 
 const CartPage = () => {
   const { items } = useSelector((state) => state.cart)

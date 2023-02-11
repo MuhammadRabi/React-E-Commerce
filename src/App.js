@@ -7,6 +7,7 @@ import {
 import CartPage from "./pages/CartPage"
 import ErrorPage from "./pages/ErrorPage"
 import HomePage from "./pages/HomePage"
+import ProductDetailPage from "./components/product/ProductDetailPage"
 import Root from "./pages/Root"
 import TestPage from "./pages/TestPage"
 
@@ -14,8 +15,9 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
-        <Route path="/" element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="/:productId" element={<ProductDetailPage />} />
         <Route path="test" element={<TestPage />} />
       </Route>
     )

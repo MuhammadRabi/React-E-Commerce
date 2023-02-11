@@ -1,4 +1,4 @@
-import GoHome from "../Components/UI/GoHome"
+import GoHome from "../components/UI/GoHome"
 
 const ErrorPage = () => {
   return (

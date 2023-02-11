@@ -1,7 +1,13 @@
-import ProductsContainer from "../Components/ProductsContainer"
+import ProductsContainer from "../components/product/ProductsContainer"
+import SearchBar from "../components/UI/SearchBar"
 
 const HomePage = () => {
-  return <ProductsContainer />
+  return (
+    <>
+      <SearchBar />
+      <ProductsContainer />
+    </>
+  )
 }
 
 export default HomePage

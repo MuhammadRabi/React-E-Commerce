@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from "../Features/productSlice"
+import { getProducts } from "../../Features/productSlice"
 import Product from "./Product"
-import Sort from "./Sort"
-import Loading from "./UI/Loading"
+import Sort from "../Sort"
+import Loading from "../UI/Loading"
 
 const ProductsContainer = () => {
   const { products, isLoading } = useSelector((state) => state.products)

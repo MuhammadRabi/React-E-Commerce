@@ -16,9 +16,9 @@ const Sort = () => {
         <p>{products.length} products found!</p>
         <hr className="hidden md:block w-64 bg-teal-700" />
         <form>
-          <label htmlFor="sort">sort by :</label>
+          <label htmlFor="sort">sort products by :</label>
           <select
-            className="capitalize ml-4 cursor-pointer"
+            className="outline-none px-1.5 py-1 rounded-md capitalize ml-4 cursor-pointer"
             name="sort"
             id="sort"
             onChange={handleSort}

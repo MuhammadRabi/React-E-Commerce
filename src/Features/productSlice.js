@@ -7,6 +7,12 @@ const initialState = {
   isLoading: true,
   filteredProducts: [],
   sort: "name-a",
+  filters: {
+    searchText: "",
+    price: 0,
+    maxPrice: 0,
+    minPrice: 0,
+  },
 }
 
 export const getProducts = createAsyncThunk(
@@ -58,7 +64,14 @@ const productSlice = createSlice({
       .addCase(getProducts.fulfilled, (state, action) => {
         state.products = action.payload.products
         state.isLoading = false
-        console.log(action.payload.products)
+        let maxPrice = action.payload.products.map((p) => p.price)
+        maxPrice = Math.max(...maxPrice)
+
+        let minPrice = action.payload.products.map((p) => p.price)
+        minPrice = Math.min(...minPrice)
+
+        state.filters.maxPrice = maxPrice
+        state.filters.minPrice = minPrice
       })
       .addCase(getProducts.rejected, (state) => {
         state.isLoading = false

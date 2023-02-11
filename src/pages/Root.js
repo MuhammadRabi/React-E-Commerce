@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom"
-import Footer from "../Components/UI/Footer"
-import Navbar from "../Components/UI/Navbar"
-import Layout from "../Components/UI/Layout"
-import Modal from "../Components/UI/Modal"
+import Navbar from "../components/UI/Navbar"
+import Layout from "../components/UI/Layout"
+import Modal from "../components/UI/Modal"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addToLocalStorage } from "../localStorage"
@@ -26,7 +25,6 @@ const Root = () => {
       <Layout>
         <Outlet />
       </Layout>
-      <Footer />
     </main>
   )
 }

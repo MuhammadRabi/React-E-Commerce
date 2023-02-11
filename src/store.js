@@ -8,7 +8,5 @@ export const store = configureStore({
     cart: cartReducer,
     modal: modalReducer,
     products: productsReducer,
-    /*     filter: filterReducer,
-     */
   },
 })
