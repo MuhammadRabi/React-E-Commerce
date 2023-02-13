@@ -1,22 +1,14 @@
 import { FaCartPlus } from "react-icons/fa"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { addProduct } from "../../Features/cartSlice"
 
 const Product = ({ id, title, price, images, description }) => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const toDetailsPage = () => {
-    navigate(`/product${id}`)
-  }
 
   return (
     <article className="bg-gray-50 py-8 px-4 rounded-md border-slate-300 border shadow-lg">
-      <figure
-        className="flex flex-col items-center space-y-6 cursor-pointer"
-        onClick={toDetailsPage}
-      >
+      <figure className="flex flex-col items-center space-y-6 cursor-pointer">
         <img src={images[3]} alt={title} className="max-w-full h-48" />
         <figcaption className="text-center">
           <h2 className="font-bold mb-2">{title.substring(0, 25)}</h2>
@@ -39,6 +31,9 @@ const Product = ({ id, title, price, images, description }) => {
           <FaCartPlus className="text-2xl"></FaCartPlus>
         </button>
       </div>
+      <Link to={`${id}`} className="mt-4 mx-auto">
+        More Details
+      </Link>
     </article>
   )
 }
