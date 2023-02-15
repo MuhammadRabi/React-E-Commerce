@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react"
+import { FaCartPlus } from "react-icons/fa"
+import { useDispatch } from "react-redux"
 import { useParams, Link } from "react-router-dom"
+import { addProduct } from "../../Features/cartSlice"
+import ProductImages from "./ProductImages"
+import ProductRating from "./ProductRating"
 
 const ProductDetailPage = () => {
+  const single_product_url = "https://dummyjson.com/products/"
   const { id } = useParams()
   const [singleProduct, setSingleProduct] = useState([])
+  const dispatch = useDispatch()
 
   const fetchSingleProduct = async (id) => {
     try {
-      const res = await fetch(`https://dummyjson.com/products/${id}`)
+      const res = await fetch(`${single_product_url}${id}`)
       const data = await res.json()
       setSingleProduct(data)
     } catch (error) {
@@ -18,23 +25,56 @@ const ProductDetailPage = () => {
   useEffect(() => {
     fetchSingleProduct(id)
   }, [id])
-  const { title, images, category, description: desc, price } = singleProduct
+  const {
+    title,
+    images = [],
+    category,
+    description: desc,
+    price,
+    stock,
+    brand,
+    rating,
+  } = singleProduct
 
   return (
     <>
-      <article className="text-center">
-        <h1 className="text-7xl">{title} </h1>
-        <div> {title} Detail Page</div>
-        <img
-          src="https://media.istockphoto.com/id/1186065957/vector/phone-call-sound-and-camera-ban-sign.jpg?s=1024x1024&w=is&k=20&c=PGvZJubb6-1KtrNbeB-3OXX35WaAiECjl8jUow01-Ng="
-          alt=""
-          className="mx-auto w-64 object-cover"
-        />
-        <p>{desc}</p>
-        <p>${price}</p>
-        <Link to="/" className="text-red-600">
-          continue shopping
-        </Link>
+      <Link to="/" className="text-white bg-red-700 ml-8 px-4 py-2 rounded-md">
+        continue shopping
+      </Link>
+      <article className="grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-6">
+        <ProductImages images={images} />
+        <div className="flex flex-col justify-center space-y-4 h-full px-12 my-4">
+          <h1 className="text-4xl font-semibold">{title} </h1>
+          <ProductRating rating={rating} />
+          <p className="text-red-700 text-2xl font-bold">${price}</p>
+          <p>{desc}</p>
+          <div className="flex flex-col space-y-2">
+            <p>
+              <span className="font-bold">Category : </span>
+              {category}
+            </p>
+            <p>
+              <span className="font-bold">Brand : </span>
+              {brand}
+            </p>
+            <p>
+              <span className="font-bold">Available : </span>{" "}
+              {stock ? "In Stock" : "Out of Stock"}
+            </p>
+          </div>
+          <hr />
+          {stock > 0 && (
+            <button
+              className="py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
+              onClick={() => {
+                dispatch(addProduct({ id, title, price, images }))
+              }}
+            >
+              <span>Add to cart</span>
+              <FaCartPlus className="text-2xl"></FaCartPlus>
+            </button>
+          )}
+        </div>
       </article>
     </>
   )

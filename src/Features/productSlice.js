@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
 const url = "https://dummyjson.com/products/?limit=100&"
-/*const url = "https://course-api.com/react-store-products"*/
+const urlJohn = "https://course-api.com/react-store-products"
 
 const initialState = {
   products: [],
@@ -20,9 +20,9 @@ export const getProducts = createAsyncThunk(
   "cart/getProducts",
   async (name, thunkApi) => {
     try {
-      const res = await fetch(url)
-      const data = await res.json()
-
+      const response = await fetch(url)
+      const data = await response.json()
+      console.log(thunkApi.getState())
       return data
     } catch (error) {
       return thunkApi.rejectWithValue("there is some error!")
@@ -65,8 +65,8 @@ const productSlice = createSlice({
       })
       .addCase(getProducts.fulfilled, (state, action) => {
         state.products = action.payload.products
+        //  state.products = action.payload
         state.isLoading = false
-        console.log(action.payload)
 
         let maxPrice = action.payload.products.map((p) => p.price)
         maxPrice = Math.max(...maxPrice)

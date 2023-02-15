@@ -3,16 +3,23 @@ import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { addProduct } from "../../Features/cartSlice"
 
-const Product = ({ id, title, price, images, description }) => {
+const Product = ({
+  id,
+  title,
+  price,
+  thumbnail: thumb,
+  images,
+  description,
+}) => {
   const dispatch = useDispatch()
 
   return (
-    <article className="bg-gray-50 py-8 px-4 rounded-md border-slate-300 border shadow-lg">
-      <figure className="flex flex-col items-center space-y-6 cursor-pointer">
-        <img src={images[3]} alt={title} className="max-w-full h-48" />
+    <article className="bg-gray-50 py-6 px-4 rounded-md border-slate-300 border shadow-lg">
+      <figure className="flex flex-col items-center space-y-6">
+        <img src={thumb} alt={title} className="max-w-full h-48" />
         <figcaption className="text-center">
           <h2 className="font-bold mb-2">{title.substring(0, 25)}</h2>
-          <p className="mb-5 text-gray-500 text-sm">
+          <p className="mb-4 text-gray-500 text-sm">
             {description.substring(0, 50)}
           </p>
           <span className="text-red-600 text-xl font-bold">
@@ -20,7 +27,7 @@ const Product = ({ id, title, price, images, description }) => {
           </span>
         </figcaption>
       </figure>
-      <div className="flex text-center w-full mt-6">
+      <div className="flex flex-col text-center w-full mt-2">
         <button
           className="mx-auto py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
           onClick={() => {
@@ -30,10 +37,10 @@ const Product = ({ id, title, price, images, description }) => {
           <span>Add to cart</span>
           <FaCartPlus className="text-2xl"></FaCartPlus>
         </button>
+        <Link to={`${id}`} className="mt-2 cursor-pointer">
+          Details
+        </Link>
       </div>
-      <Link to={`${id}`} className="mt-4 mx-auto">
-        More Details
-      </Link>
     </article>
   )
 }
