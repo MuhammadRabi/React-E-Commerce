@@ -7,7 +7,8 @@ import ProductImages from "./ProductImages"
 import ProductRating from "./ProductRating"
 
 const ProductDetailPage = () => {
-  const single_product_url = "https://dummyjson.com/products/"
+  const single_product_url =
+    "https://course-api.com/react-store-single-product?id="
   const { id } = useParams()
   const [singleProduct, setSingleProduct] = useState([])
   const dispatch = useDispatch()
@@ -24,15 +25,15 @@ const ProductDetailPage = () => {
 
   useEffect(() => {
     fetchSingleProduct(id)
-  }, [id])
+  }, [setSingleProduct, id])
   const {
-    title,
-    images = [],
+    name,
+    images,
     category,
     description: desc,
     price,
     stock,
-    brand,
+    company,
     rating,
   } = singleProduct
 
@@ -44,9 +45,11 @@ const ProductDetailPage = () => {
       <article className="grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-6">
         <ProductImages images={images} />
         <div className="flex flex-col justify-center space-y-4 h-full px-12 my-4">
-          <h1 className="text-4xl font-semibold">{title} </h1>
+          <h1 className="text-4xl font-semibold capitalize">{name} </h1>
           <ProductRating rating={rating} />
-          <p className="text-red-700 text-2xl font-bold">${price}</p>
+          <p className="text-red-700 text-2xl font-bold">
+            ${(price / 100).toFixed(2)}
+          </p>
           <p>{desc}</p>
           <div className="flex flex-col space-y-2">
             <p>
@@ -55,7 +58,7 @@ const ProductDetailPage = () => {
             </p>
             <p>
               <span className="font-bold">Brand : </span>
-              {brand}
+              {company}
             </p>
             <p>
               <span className="font-bold">Available : </span>{" "}
@@ -67,7 +70,7 @@ const ProductDetailPage = () => {
             <button
               className="py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
               onClick={() => {
-                dispatch(addProduct({ id, title, price, images }))
+                dispatch(addProduct({ id, name, price, images }))
               }}
             >
               <span>Add to cart</span>

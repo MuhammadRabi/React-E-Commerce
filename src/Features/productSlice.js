@@ -1,19 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
-const url = "https://dummyjson.com/products/?limit=100&"
-const urlJohn = "https://course-api.com/react-store-products"
+const url = "https://course-api.com/react-store-products"
 
 const initialState = {
-  products: [],
+  productsList: [],
   isLoading: true,
-  filteredProducts: [],
   sort: "name-a",
-  filters: {
-    searchText: "",
-    price: 0,
-    maxPrice: 0,
-    minPrice: 0,
-  },
 }
 
 export const getProducts = createAsyncThunk(
@@ -37,23 +29,23 @@ const productSlice = createSlice({
     updateSort: (state, action) => {
       state.sort = action.payload
 
-      let tempProducts = [...state.products]
+      let tempProducts = [...state.productsList]
 
       if (state.sort === "price-lowest") {
-        tempProducts = state.products.sort((a, b) => {
+        tempProducts = state.productsList.sort((a, b) => {
           return a.price - b.price
         })
       } else if (state.sort === "price-highest") {
-        tempProducts = state.products.sort((a, b) => {
+        tempProducts = state.productsList.sort((a, b) => {
           return b.price - a.price
         })
       } else if (state.sort === "name-a") {
-        tempProducts = state.products.sort((a, b) => {
-          return a.title.localeCompare(b.title)
+        tempProducts = state.productsList.sort((a, b) => {
+          return a.name.localeCompare(b.name)
         })
       } else if (state.sort === "name-z") {
-        tempProducts = state.products.sort((a, b) => {
-          return b.title.localeCompare(a.title)
+        tempProducts = state.productsList.sort((a, b) => {
+          return b.name.localeCompare(a.name)
         })
       }
     },
@@ -64,18 +56,8 @@ const productSlice = createSlice({
         state.isLoading = true
       })
       .addCase(getProducts.fulfilled, (state, action) => {
-        state.products = action.payload.products
-        //  state.products = action.payload
+        state.productsList = action.payload
         state.isLoading = false
-
-        let maxPrice = action.payload.products.map((p) => p.price)
-        maxPrice = Math.max(...maxPrice)
-
-        let minPrice = action.payload.products.map((p) => p.price)
-        minPrice = Math.min(...minPrice)
-
-        state.filters.maxPrice = maxPrice
-        state.filters.minPrice = minPrice
       })
       .addCase(getProducts.rejected, (state) => {
         state.isLoading = false

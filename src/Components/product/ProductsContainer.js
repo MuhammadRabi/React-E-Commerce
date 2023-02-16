@@ -6,8 +6,9 @@ import Sort from "../Sort"
 import Loading from "../UI/Loading"
 
 const ProductsContainer = () => {
-  const { products, isLoading } = useSelector((state) => state.products)
+  const { productsList, isLoading } = useSelector((state) => state.products)
   const dispatch = useDispatch()
+  console.log(productsList)
 
   useEffect(() => {
     dispatch(getProducts())
@@ -21,7 +22,7 @@ const ProductsContainer = () => {
     <>
       <Sort />
       <section className="mt-12 mx-12 sm:mx-8 grid grid-cols-275 gap-6 md:mx-16 md:gap-8">
-        {products.map((product) => {
+        {productsList.map((product) => {
           return <Product key={product.id} {...product} />
         })}
       </section>

@@ -10,6 +10,8 @@ import HomePage from "./pages/HomePage"
 import ProductDetailPage from "./components/product/ProductDetailPage"
 import Root from "./pages/Root"
 import TestPage from "./pages/TestPage"
+import ProductsPage from "./pages/ProductsPage"
+import AboutusPage from "./pages/AboutusPage"
 
 const App = () => {
   const router = createBrowserRouter(
@@ -17,8 +19,10 @@ const App = () => {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route index element={<HomePage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="products" element={<ProductsPage />} />
         <Route path=":id" element={<ProductDetailPage />} />
         <Route path="test" element={<TestPage />} />
+        <Route path="about" element={<AboutusPage />} />
       </Route>
     )
   )

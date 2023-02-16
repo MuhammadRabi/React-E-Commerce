@@ -2,7 +2,7 @@ import React from "react"
 
 const SearchBar = () => {
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="mt-2 text-center">
+    <form onSubmit={(e) => e.preventDefault()} className="text-center">
       {/*       <label htmlFor="search">search</label>
        */}{" "}
       <input

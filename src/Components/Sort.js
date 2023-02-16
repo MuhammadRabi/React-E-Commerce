@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { updateSort } from "../Features/productSlice"
 
 const Sort = () => {
-  const { products, sort } = useSelector((state) => state.products)
+  const { productsList, sort } = useSelector((state) => state.products)
   const dispatch = useDispatch()
 
   const handleSort = (e) => {
@@ -13,7 +13,7 @@ const Sort = () => {
   return (
     <>
       <section className="flex flex-col  space-y-6 mt-12 justify-center items-center space-x-8 md:flex-row md:space-y-0">
-        <p>{products.length} products found!</p>
+        <p>{productsList.length} products found!</p>
         <hr className="hidden md:block w-64 bg-teal-700" />
         <form>
           <label htmlFor="sort">sort products by :</label>
