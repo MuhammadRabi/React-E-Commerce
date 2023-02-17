@@ -1,4 +1,10 @@
+import SectionHeadline from "../components/UI/SectionHeadline"
+
 const AboutusPage = () => {
-  return <h2 className="text-6xl">AboutusPage</h2>
+  return (
+    <>
+      <SectionHeadline name="About Us" />
+    </>
+  )
 }
 export default AboutusPage

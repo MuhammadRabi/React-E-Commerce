@@ -1,18 +1,11 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from "../../Features/productSlice"
+import { useSelector } from "react-redux"
 import Product from "./Product"
 import Sort from "../Sort"
 import Loading from "../UI/Loading"
 
 const ProductsContainer = () => {
   const { productsList, isLoading } = useSelector((state) => state.products)
-  const dispatch = useDispatch()
   console.log(productsList)
-
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [dispatch])
 
   if (isLoading) {
     return <Loading />

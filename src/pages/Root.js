@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addToLocalStorage } from "../localStorage"
 import { calculateTotalPrice } from "../Features/cartSlice"
+import { getProducts } from "../Features/productSlice"
 
 const Root = () => {
   const { isModalOpen } = useSelector((state) => state.modal)
+
   const cart = useSelector((state) => state.cart)
 
   const dispatch = useDispatch()
@@ -17,6 +19,10 @@ const Root = () => {
     addToLocalStorage(cart.items)
     dispatch(calculateTotalPrice())
   }, [cart.items, dispatch])
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [dispatch])
 
   return (
     <main className="relative">

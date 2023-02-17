@@ -4,6 +4,7 @@ const url = "https://course-api.com/react-store-products"
 
 const initialState = {
   productsList: [],
+  featuredProducts: [],
   isLoading: true,
   sort: "name-a",
 }
@@ -57,6 +58,9 @@ const productSlice = createSlice({
       })
       .addCase(getProducts.fulfilled, (state, action) => {
         state.productsList = action.payload
+        state.featuredProducts = action.payload.filter(
+          (item) => item.featured === true
+        )
         state.isLoading = false
       })
       .addCase(getProducts.rejected, (state) => {

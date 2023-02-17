@@ -1,20 +1,24 @@
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 import { removeItem, increase, decrease } from "../../Features/cartSlice"
+import { formatPrice } from "../../utils/helpers"
 
-const CartItem = ({ id, title, price, amount, images }) => {
+const CartItem = ({ id, name, price, amount, image }) => {
   const dispatch = useDispatch()
 
   return (
     <article className="flex items-center justify-between text-xl my-6 bg-white hover:bg-gray-50 px-4 sm:px-8 py-6 rounded-md">
-      <img
-        src={images[3]}
-        alt={title}
-        className="w-16 h-16 md:w-24 md:h-24 rounded-md"
-      />
+      <Link to={`/products/${id}`}>
+        <img
+          src={image}
+          alt={name}
+          className="w-16 h-16 md:w-24 md:h-24 rounded-md"
+        />
+      </Link>
       <div className="product-info text-lg flex-1 space-y-2 ml-4 sm:ml-8">
-        <p className="capitalize text-xl">{title}</p>
-        <p className="text-gray-500 font-bold -mb-1">${price.toFixed(2)}</p>
+        <p className="capitalize text-xl">{name}</p>
+        <p className="text-gray-500 font-bold -mb-1">{formatPrice(price)}</p>
         <span
           className="capitalize cursor-pointer font-semibold text-red-600 hover:text-red-700 duration-500"
           onClick={() => dispatch(removeItem(id))}

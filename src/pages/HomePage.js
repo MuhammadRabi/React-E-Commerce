@@ -1,11 +1,9 @@
-import ProductsContainer from "../components/product/ProductsContainer"
-import SearchBar from "../components/UI/SearchBar"
+import FeaturedProducts from "../components/product/FeaturedProducts"
 
 const HomePage = () => {
   return (
     <>
-      <SearchBar />
-      <ProductsContainer />
+      <FeaturedProducts />
     </>
   )
 }
