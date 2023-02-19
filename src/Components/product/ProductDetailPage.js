@@ -26,6 +26,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     fetchSingleProduct(id)
   }, [setSingleProduct, id])
+
   const {
     name,
     images,
