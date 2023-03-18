@@ -14,3 +14,13 @@ body{
     font-family: 'Poppins',sans-serif
     
 }
+
+nav ul a.active{
+    color:#ddd;
+}
+.nav-center{
+    width: 90vw;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}

@@ -2,7 +2,7 @@ import SearchBar from "./UI/SearchBar"
 
 const FilterBar = () => {
   return (
-    <div className="h-96 bg-emerald-100 p-4 rounded-sm">
+    <div className="h-96 border-2 border-zinc-200 p-4 rounded-md">
       <h2 className="text-center">Filter</h2>
       <div className="flex flex-col space-y-4">
         <SearchBar />

@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Cart from "../cart/Cart"
+import { MdMenu } from "react-icons/md"
 
 const Navbar = () => {
-  /*   const [scroll, setScroll] = useState(false)
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 20)
-    })
-    return () => {
-      window.removeEventListener("scroll", () => {
-        setScroll(false)
-      })
-    }
-  }, [])
- */
   return (
     <>
-      {/*   <nav
-        className={`${
-          scroll ? "shadow-lg" : ""
-        } fixed bg-teal-700 w-full font-bold capitalize py-3 px-10 text-white text-2xl flex justify-between items-center`}
-      > */}
-      <nav className="bg-teal-700 w-full font-bold capitalize py-3 px-10 text-white flex justify-around items-center">
-        <h3 className="text-sm md:text-2xl">redux-toolkit cart</h3>
-        <ul className="hidden lg:flex space-x-6">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/products">Products</NavLink>
-          <NavLink to="/about">About us</NavLink>
+      <nav className="bg-teal-600 font-bold capitalize py-3 px-10 text-white flex justify-between items-center">
+        <h3 className="text-xl md:text-2xl px-4">
+          <Link to="/">LOGO</Link>
+        </h3>
+        <ul className="hidden flex-1 justify-center lg:flex space-x-6">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/products">Products</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
+          </li>
         </ul>
         <Cart />
+        <span className="lg:hidden block cursor-pointer text-5xl">
+          <MdMenu />
+        </span>
       </nav>
     </>
   )

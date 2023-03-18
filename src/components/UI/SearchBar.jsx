@@ -1,22 +1,26 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateFilter } from "../../Features/productSlice"
 
 const SearchBar = () => {
+  const dispatch = useDispatch()
+  const { text } = useSelector((state) => state.products.filters)
+
+  const handleFilter = (e) => {
+    const { name, value } = e.target
+    dispatch(updateFilter({ name, value }))
+  }
+
   return (
     <form onSubmit={(e) => e.preventDefault()} className="text-center">
-      {/*       <label htmlFor="search">search</label>
-       */}{" "}
       <input
-        className="lg:w-full mx-auto pl-2 p-2 outline-none rounded-md"
+        className="w-full mx-auto p-2 rounded-md border"
         type="text"
         name="text"
+        value={text}
+        onChange={handleFilter}
         placeholder="find your product!"
       />
-      {/*      <button
-        type="submit"
-        className="bg-teal-700 text-white px-4 py-2 rounded-r-md duration-300 hover:bg-teal-600"
-      >
-        Search
-      </button> */}
     </form>
   )
 }

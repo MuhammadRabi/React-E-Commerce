@@ -5,8 +5,14 @@ const url = "https://course-api.com/react-store-products"
 const initialState = {
   productsList: [],
   featuredProducts: [],
+  filteredProducts: [],
   isLoading: true,
   sort: "name-a",
+  filters: {
+    text: "",
+    company: "all",
+    category: "all",
+  },
 }
 
 export const getProducts = createAsyncThunk(
@@ -50,6 +56,27 @@ const productSlice = createSlice({
         })
       }
     },
+    updateFilter: (state, action) => {
+      const { name, value } = action.payload
+      state.filters[name] = value
+      // search filter
+      const { text, company, category } = state.filters
+      if (text === value) {
+      }
+      state.productsList = state.productsList.filter((item) =>
+        item.name.toLowerCase().includes(value)
+      )
+      /*   if (company !== "all") {
+      }
+      state.productsList = state.productsList.filter(
+        (item) => item.company === company
+      )
+      if (category !== "all") {
+      }
+      state.productsList = state.productsList.filter(
+        (item) => item.category === category
+      ) */
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,6 +96,6 @@ const productSlice = createSlice({
   },
 })
 
-export const { updateSort } = productSlice.actions
+export const { updateSort, updateFilter } = productSlice.actions
 
 export default productSlice.reducer

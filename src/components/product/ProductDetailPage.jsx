@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { FaCartPlus } from "react-icons/fa"
 import { useDispatch } from "react-redux"

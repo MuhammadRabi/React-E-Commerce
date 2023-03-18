@@ -4,7 +4,6 @@ import Loading from "../UI/Loading"
 
 const ProductsContainer = () => {
   const { productsList, isLoading } = useSelector((state) => state.products)
-  console.log(productsList)
 
   if (isLoading) {
     return <Loading />

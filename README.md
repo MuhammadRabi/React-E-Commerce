@@ -1,16 +1,18 @@
 # E-Commerce Project
 
+## Overview
+
 The project is a react web app with fetched data from external API.
 The app consists of few pages
 
-# Features
+## Features
 
 - functional Shopping Cart
 - Products fitlering mechanism
 - multi pages with dynamic routing
 - .....
 
-# How To Use
+## How To Use
 
 To be able to use this react app locally in a development environment you will need the following:
 
@@ -39,6 +41,7 @@ npm run dev
 - Redux-toolkit
 - React Router
 - React Hooks
+- Framer Motion
 
 ## Contributing
 
