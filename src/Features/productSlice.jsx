@@ -36,7 +36,7 @@ const productSlice = createSlice({
     updateSort: (state, action) => {
       state.sort = action.payload
 
-      let tempProducts = [...state.productsList]
+      let tempProducts = state.productsList
 
       if (state.sort === "price-lowest") {
         tempProducts = state.productsList.sort((a, b) => {

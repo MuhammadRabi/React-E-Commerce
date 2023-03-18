@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux"
 import Product from "./Product"
 import Loading from "../UI/Loading"
+import useProductsStore from "../../Features/productsStore"
 
 const ProductsContainer = () => {
-  const { productsList, isLoading } = useSelector((state) => state.products)
+  /*   const { productsList, isLoading } = useSelector((state) => state.products)
+   */
+  const productsList = useProductsStore((state) => state.productsList)
+  const isLoading = useProductsStore((state) => state.isLoading)
 
   if (isLoading) {
     return <Loading />

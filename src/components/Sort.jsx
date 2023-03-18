@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux"
-import { updateSort } from "../Features/productSlice"
+import useProductsStore from "../Features/productsStore"
 
 const Sort = () => {
-  const { productsList, sort } = useSelector((state) => state.products)
-  const dispatch = useDispatch()
+  const productsList = useProductsStore((state) => state.productsList)
+  const sort = useProductsStore((state) => state.sort)
+  const updateSort = useProductsStore((state) => state.updateSort)
 
   const handleSort = (e) => {
     const value = e.target.value
-    dispatch(updateSort(value))
+    updateSort(value)
   }
 
   return (
@@ -20,7 +20,6 @@ const Sort = () => {
           <select
             className="outline-none px-1.5 py-1 rounded-md capitalize ml-4 cursor-pointer"
             name="sort"
-            id="sort"
             onChange={handleSort}
             value={sort}
           >

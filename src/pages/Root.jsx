@@ -6,13 +6,17 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addToLocalStorage } from "../localStorage"
 import { calculateTotalPrice } from "../Features/cartSlice"
-import { getProducts, updateFilter, updateSort } from "../Features/productSlice"
+import useProductsStore from "../Features/productsStore"
 
 const Root = () => {
   const { isModalOpen } = useSelector((state) => state.modal)
-  const { sort, filters } = useSelector((state) => state.products)
-
   const cart = useSelector((state) => state.cart)
+
+  const { getProducts, updateSort, sort } = useProductsStore((state) => ({
+    sort: state.sort,
+    getProducts: state.getProducts,
+    updateSort: state.updateSort,
+  }))
 
   const dispatch = useDispatch()
 
@@ -22,9 +26,12 @@ const Root = () => {
   }, [cart.items, dispatch])
 
   useEffect(() => {
-    dispatch(getProducts())
-    console.log(filters)
-  }, [dispatch])
+    getProducts()
+  }, [])
+
+  useEffect(() => {
+    updateSort()
+  }, [sort])
 
   return (
     <main className="relative">
