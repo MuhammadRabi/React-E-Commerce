@@ -1,9 +1,9 @@
-import useProductsStore from "../Features/productsStore"
+import productStore from "../Features/productStore"
 
 const Sort = () => {
-  const productsList = useProductsStore((state) => state.productsList)
-  const sort = useProductsStore((state) => state.sort)
-  const updateSort = useProductsStore((state) => state.updateSort)
+  const productsList = productStore((state) => state.productsList)
+  const sort = productStore((state) => state.sort)
+  const updateSort = productStore((state) => state.updateSort)
 
   const handleSort = (e) => {
     const value = e.target.value

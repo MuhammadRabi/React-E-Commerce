@@ -1,24 +1,18 @@
 import { create } from "zustand"
+import { devtools } from "zustand/middleware"
 
-//const url = "https://course-api.com/react-store-products"
-
-const useProductsStore = create((set) => ({
+const store = (set) => ({
   productsList: [],
   featuredProducts: [],
-  filteredProducts: [],
   isLoading: true,
   sort: "name-a",
-  filters: {
-    text: "",
-    company: "all",
-    category: "all",
-  },
+  searchQuery: "",
+
   // fetching data
   getProducts: async () => {
+    const url = "https://course-api.com/react-store-products"
     try {
-      const response = await fetch(
-        "https://course-api.com/react-store-products"
-      )
+      const response = await fetch(url)
       const data = await response.json()
       set({ productsList: data })
       set({
@@ -53,6 +47,21 @@ const useProductsStore = create((set) => ({
       return { productsList: tempProducts, sort: value }
     })
   },
-}))
+  setSearchQuery: (searchQuery) =>
+    set((state) => {
+      let filteredProducts = [...state.productsList]
 
-export default useProductsStore
+      if (searchQuery === "") {
+        filteredProducts = state.productsList
+      } else {
+        filteredProducts = state.productsList.filter((product) =>
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      }
+      return { searchQuery, productsList: filteredProducts }
+    }),
+})
+
+const productStore = create(devtools(store))
+
+export default productStore

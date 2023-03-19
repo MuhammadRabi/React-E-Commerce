@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { addToLocalStorage } from "../localStorage"
 import { calculateTotalPrice } from "../Features/cartSlice"
-import useProductsStore from "../Features/productsStore"
+import productStore from "../Features/productStore"
+import { modalStore } from "../Features/modalStore"
 
 const Root = () => {
-  const { isModalOpen } = useSelector((state) => state.modal)
   const cart = useSelector((state) => state.cart)
 
-  const { getProducts, updateSort, sort } = useProductsStore((state) => ({
+  const isModalOpen = modalStore((state) => state.isModalOpen)
+
+  const { getProducts, updateSort, sort } = productStore((state) => ({
     sort: state.sort,
     getProducts: state.getProducts,
     updateSort: state.updateSort,
@@ -32,6 +34,13 @@ const Root = () => {
   useEffect(() => {
     updateSort()
   }, [sort])
+
+  const setSearchQuery = productStore((state) => state.setSearchQuery)
+  const searchQuery = productStore((state) => state.searchQuery)
+
+  useEffect(() => {
+    setSearchQuery(searchQuery)
+  }, [searchQuery])
 
   return (
     <main className="relative">

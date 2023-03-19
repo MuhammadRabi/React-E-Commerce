@@ -1,9 +1,9 @@
-import useProductsStore from "../../Features/productsStore"
+import productStore from "../../Features/productStore"
 import SectionHeadline from "../UI/SectionHeadline"
 import Product from "./Product"
 
 const FeaturedProducts = () => {
-  const featuredProducts = useProductsStore((state) => state.featuredProducts)
+  const featuredProducts = productStore((state) => state.featuredProducts)
 
   return (
     <>
