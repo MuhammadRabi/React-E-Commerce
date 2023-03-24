@@ -4,7 +4,7 @@ import { cartStore } from "../../Features/cartStore"
 import { AiOutlineHeart } from "react-icons/ai"
 
 const Cart = () => {
-  const amount = cartStore((state) => state.amount)
+  const itemsInCart = cartStore((state) => state.items)
   return (
     <>
       <Link to="cart">
@@ -14,7 +14,7 @@ const Cart = () => {
             <AiOutlineShoppingCart />
           </div>
           <p className="absolute w-6 h-6 flex justify-center items-center rounded-full text-[18px] font-bold p-4 top-0 right-12 bg-red-700 z-10 text-white">
-            {amount}
+            {itemsInCart.length}
           </p>
         </div>
       </Link>

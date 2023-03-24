@@ -4,21 +4,17 @@ import { persist } from "zustand/middleware"
 
 const store = (set) => ({
   items: [],
-  amount: 0,
-  totalPrice: 0,
+  cartGrandTotal: 0,
   // working
   addToCart: (item) => {
     set((state) => ({
       items: [...state.items, item],
-      amount: state.amount + 1,
-      totalPrice: state.totalPrice + item.price,
     }))
   },
   // working
   clearCart: () =>
     set((state) => ({
       items: [],
-      amount: 0,
       totalPrice: 0,
     })),
   removeItem: (id) =>
@@ -26,22 +22,18 @@ const store = (set) => ({
       items: state.items.filter((item) => {
         return item.id !== id
       }),
-      amount: state.amount - 1,
     })),
-  increase: (id) =>
+  // calculate total price of the cart
+  setCartGrandTotal: (price) =>
     set((state) => ({
-      /*      const selectedItem = state.items.find(
-        (item) => item.id === id
-      )
-      selectedItem.amount+1 */
+      cartGrandTotal: price,
     })),
-  /*  decrease: (id) =>
-    set((state) => {
-      const selectedItem = state.items.find((item) => item.id === id)
-      selectedItem.amount -= 1
-      return { items: [...state.items] }
-    }), */
-  //  calculateTotalPrice: () => set((state) => ({})),
+  increaseCartGrandTotal: (price) =>
+    set((state) => ({
+      cartGrandTotal: state.cartGrandTotal + price,
+    })),
+  decreaseCartGrandTotal: (price) =>
+    set((state) => ({ cartGrandTotal: state.cartGrandTotal - price })),
 })
 
 export const cartStore = create(persist(devtools(store), { name: "cartStore" }))

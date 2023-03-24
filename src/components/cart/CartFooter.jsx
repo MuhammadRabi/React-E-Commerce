@@ -3,18 +3,15 @@ import { modalStore } from "../../Features/modalStore"
 import { formatPrice } from "../../utils/helpers"
 
 const CartFooter = () => {
-  // need to add calculate price
   const items = cartStore((state) => state.items)
-  const totalPrice = cartStore((state) => state.totalPrice)
+  const cartGrandTotal = cartStore((state) => state.cartGrandTotal)
   const openModal = modalStore((state) => state.openModal)
   return (
     <>
       <section className="mt-5 pt-3 px-4 border-t-2 border-red-800 text-xl">
         <div className="flex items-center justify-between">
           <span>Total</span>
-          {/*           <span>{formatPrice(totalPrice)}</span>
-           */}{" "}
-          <span>{formatPrice(totalPrice)}</span>
+          <span>{formatPrice(cartGrandTotal)}</span>
         </div>
         {items.length >= 1 && (
           <button

@@ -1,23 +1,28 @@
+import { useEffect } from "react"
 import CartContainer from "../components/cart/CartContainer"
-import GoHome from "../components/UI/GoHome"
+import EmptyCart from "../components/cart/emptyCart"
 import { cartStore } from "../Features/cartStore"
 
 const CartPage = () => {
-  const items = cartStore((state) => state.items)
+  // replace it with itemsInCart
+  const itemsInCart = cartStore((state) => state.items)
+  const setCartGrandTotal = cartStore((state) => state.setCartGrandTotal)
 
-  return (
-    <>
-      {items.length === 0 ? (
-        <div className="flex flex-col space-y-12 mt-40 h-[calc(100vh-330px)]">
-          <p className="text-center text-xl">
-            there is no items available in your cart
-          </p>
-          <GoHome />
-        </div>
-      ) : (
-        <CartContainer />
-      )}
-    </>
-  )
+  const calculateGrandTotal = () => {
+    const grandTotal = itemsInCart
+      .map((item) => {
+        return item.price
+      })
+      .reduce((prev, curr) => {
+        return prev + curr
+      })
+    setCartGrandTotal(grandTotal)
+  }
+
+  useEffect(() => {
+    itemsInCart.length !== 0 && calculateGrandTotal()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return <>{itemsInCart.length === 0 ? <EmptyCart /> : <CartContainer />}</>
 }
 export default CartPage
