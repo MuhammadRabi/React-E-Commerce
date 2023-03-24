@@ -1,12 +1,12 @@
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
-import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { removeItem, increase, decrease } from "../../Features/cartSlice"
+import { cartStore } from "../../Features/cartStore"
 import { formatPrice } from "../../utils/helpers"
 
 const CartItem = ({ id, name, price, amount, image }) => {
-  const dispatch = useDispatch()
-
+  const increase = cartStore((state) => state.increase)
+  const decrease = cartStore((state) => state.decrease)
+  const removeItem = cartStore((state) => state.removeItem)
   return (
     <article className="flex items-center justify-between text-xl my-6 bg-white hover:bg-gray-50 px-4 sm:px-8 py-6 rounded-md">
       <Link to={`/products/${id}`}>
@@ -21,7 +21,7 @@ const CartItem = ({ id, name, price, amount, image }) => {
         <p className="text-gray-500 font-bold -mb-1">{formatPrice(price)}</p>
         <span
           className="capitalize cursor-pointer font-semibold text-red-600 hover:text-red-700 duration-500"
-          onClick={() => dispatch(removeItem(id))}
+          onClick={() => removeItem(id)}
         >
           remove
         </span>
@@ -29,7 +29,7 @@ const CartItem = ({ id, name, price, amount, image }) => {
       <div className="amount-control flex items-center space-x-2 justify-center">
         <span
           className="text-green-500 hover:text-green-700 text-[24px] sm:text-[44px] cursor-pointer duration-500"
-          onClick={() => dispatch(increase(id))}
+          onClick={() => increase(id)}
         >
           <FiPlusSquare />
         </span>
@@ -40,9 +40,9 @@ const CartItem = ({ id, name, price, amount, image }) => {
           className="text-red-500 hover:text-red-700 text-[24px] sm:text-[44px] cursor-pointer duration-500"
           onClick={() => {
             if (amount === 1) {
-              dispatch(removeItem(id))
+              removeItem(id)
             }
-            dispatch(decrease(id))
+            decrease(id)
           }}
         >
           <FiMinusSquare />

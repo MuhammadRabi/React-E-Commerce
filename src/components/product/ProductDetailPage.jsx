@@ -1,9 +1,8 @@
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { FaCartPlus } from "react-icons/fa"
-import { useDispatch } from "react-redux"
 import { useParams, Link } from "react-router-dom"
-import { addProduct } from "../../Features/cartSlice"
+import { cartStore } from "../../Features/cartStore"
 import ProductImages from "./ProductImages"
 import ProductRating from "./ProductRating"
 
@@ -12,7 +11,7 @@ const ProductDetailPage = () => {
     "https://course-api.com/react-store-single-product?id="
   const { id } = useParams()
   const [singleProduct, setSingleProduct] = useState([])
-  const dispatch = useDispatch()
+  const addToCart = cartStore((state) => state.addToCart)
 
   const fetchSingleProduct = async (id) => {
     try {
@@ -72,7 +71,7 @@ const ProductDetailPage = () => {
             <button
               className="py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
               onClick={() => {
-                dispatch(addProduct({ id, name, price, images }))
+                addToCart({ id, name, price, images })
               }}
             >
               <span>Add to cart</span>

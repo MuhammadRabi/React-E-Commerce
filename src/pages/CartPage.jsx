@@ -1,9 +1,9 @@
 import CartContainer from "../components/cart/CartContainer"
-import { useSelector } from "react-redux"
 import GoHome from "../components/UI/GoHome"
+import { cartStore } from "../Features/cartStore"
 
 const CartPage = () => {
-  const { items } = useSelector((state) => state.cart)
+  const items = cartStore((state) => state.items)
 
   return (
     <>

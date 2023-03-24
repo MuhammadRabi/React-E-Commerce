@@ -1,11 +1,10 @@
 import { FaCartPlus } from "react-icons/fa"
-import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { addProduct } from "../../Features/cartSlice"
 import { formatPrice } from "../../utils/helpers"
+import { cartStore } from "../../Features/cartStore"
 
 const Product = ({ id, name, price, image, description }) => {
-  const dispatch = useDispatch()
+  const addToCart = cartStore((state) => state.addToCart)
 
   return (
     <article className="bg-gray-50 py-6 px-4 rounded-md border-slate-300 border shadow-lg">
@@ -27,7 +26,7 @@ const Product = ({ id, name, price, image, description }) => {
         <button
           className="mx-auto py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
           onClick={() => {
-            dispatch(addProduct({ id, name, price, image }))
+            addToCart({ id, name, price, image })
           }}
         >
           <span>Add to cart</span>

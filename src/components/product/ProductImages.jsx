@@ -1,7 +1,6 @@
 import { useState } from "react"
 const ProductImages = ({ images = [[]] }) => {
   const [mainImage, setMainImage] = useState(images[0])
-  console.log(mainImage)
 
   return (
     <div className="p-2">

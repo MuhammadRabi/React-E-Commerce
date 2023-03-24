@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux"
-import { clearCart } from "../../Features/cartSlice"
+import { cartStore } from "../../Features/cartStore"
 import { modalStore } from "../../Features/modalStore"
 
 const Modal = () => {
-  const dispatch = useDispatch()
-
+  const clearCart = cartStore((state) => state.clearCart)
   const closeModal = modalStore((state) => state.closeModal)
   return (
     <section className="w-full h-full bg-black/80 flex justify-center items-center top-0 right-0 absolute z-50">
@@ -16,7 +15,7 @@ const Modal = () => {
           <button
             className="px-4 text-xl font-semibold capitalize border-2 rounded-md duration-700 border-red-700 hover:bg-red-700 hover:text-white"
             onClick={() => {
-              dispatch(clearCart())
+              clearCart()
               closeModal()
             }}
           >
