@@ -4,6 +4,7 @@ import { FaCartPlus } from "react-icons/fa"
 import { cartStore } from "../../Features/cartStore"
 
 const ProductDetails = ({
+  id,
   images,
   price,
   description,
@@ -14,6 +15,7 @@ const ProductDetails = ({
   stock,
 }) => {
   const addToCart = cartStore((state) => state.addToCart)
+
   return (
     <article className="grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-6">
       <ProductImages images={images} />

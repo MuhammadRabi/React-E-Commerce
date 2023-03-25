@@ -30,10 +30,6 @@ const Root = () => {
     getProducts()
   }, [])
 
-  useEffect(() => {
-    updateSort()
-  }, [sort])
-
   const setSearchQuery = productStore((state) => state.setSearchQuery)
   const searchQuery = productStore((state) => state.searchQuery)
 

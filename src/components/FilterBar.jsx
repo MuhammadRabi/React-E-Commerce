@@ -1,26 +1,87 @@
 import SearchBar from "./UI/SearchBar"
 
-const FilterBar = () => {
+const FilterBar = ({ selectedCategoryItem, setSelectedCategoryItem }) => {
+  const onCategoryChange = (item) => {
+    setSelectedCategoryItem([...selectedCategoryItem, item])
+  }
+
   return (
     <div className="h-96 border-2 border-zinc-200 p-4 rounded-md">
       <h2 className="text-center">Filter</h2>
       <div className="flex flex-col space-y-4">
         <SearchBar />
-        <section>
-          <h3>category</h3>
-          <p>brand 1</p>
-          <p>brand 1</p>
-          <p>brand 1</p>
-          <p>brand 1</p>
-        </section>
-        <section>
-          <h3>brand</h3>
-          <select name="brand" id="brand" className="outline-none">
-            <option value="">one </option>
-            <option value="">two </option>
-            <option value="">three</option>
+        <article>
+          <h3>select category:</h3>
+          <div>
+            <input
+              type="checkbox"
+              id="office"
+              name="category"
+              value="office"
+              onChange={() => onCategoryChange("office")}
+            />
+            <label htmlFor="category">office</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="living room"
+              name="category"
+              value="living room"
+              onChange={() => onCategoryChange("living room")}
+            />
+            <label htmlFor="category">living room</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="kitchen"
+              name="category"
+              value="kitchen"
+              onChange={() => onCategoryChange("kitchen")}
+            />
+            <label htmlFor="category">kitchen</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="bedroom"
+              name="category"
+              value="bedroom"
+              onChange={() => onCategoryChange("bedroom")}
+            />
+            <label htmlFor="category">bedroom</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="dining"
+              name="category"
+              value="dining"
+              onChange={() => onCategoryChange("dining")}
+            />
+            <label htmlFor="category">dining</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="kids"
+              name="category"
+              value="kids"
+              onChange={() => onCategoryChange("kids")}
+            />
+            <label htmlFor="category">kids</label>
+          </div>
+        </article>
+        <article>
+          <label htmlFor="company">select company:</label>
+          <select name="company" id="brand" className="outline-none">
+            <option value="caressa">caressa </option>
+            <option value="liddy">liddy </option>
+            <option value="ikea">ikea</option>
+            <option value="marcos">marcos</option>
           </select>
-        </section>
+        </article>
         <section>
           <label htmlFor="price">Price</label>
           <input type="range" max="" min="" />
