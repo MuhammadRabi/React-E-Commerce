@@ -1,11 +1,15 @@
-import { FaCartPlus } from "react-icons/fa"
-import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
-import { addProduct } from "../../Features/cartSlice"
-import { formatPrice } from "../../utils/helpers"
+import { Link } from "react-router-dom";
+import { formatPrice } from "../../utils/helpers";
+import { cartStore } from "../../Features/cartStore";
+import { toast } from "react-toastify";
+import AddToCartBtn from "./AddToCartBtn";
 
 const Product = ({ id, name, price, image, description }) => {
-  const dispatch = useDispatch()
+  const addItemToCart = (item) => {
+    addToCart(item);
+    toast.success("Product added to cart!");
+  };
+  const addToCart = cartStore((state) => state.addToCart);
 
   return (
     <article className="bg-gray-50 py-6 px-4 rounded-md border-slate-300 border shadow-lg">
@@ -24,17 +28,9 @@ const Product = ({ id, name, price, image, description }) => {
         </figcaption>
       </figure>
       <div className="flex flex-col text-center w-full mt-2">
-        <button
-          className="mx-auto py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
-          onClick={() => {
-            dispatch(addProduct({ id, name, price, image }))
-          }}
-        >
-          <span>Add to cart</span>
-          <FaCartPlus className="text-2xl"></FaCartPlus>
-        </button>
+        <AddToCartBtn id={id} name={name} price={price} image={image} />
       </div>
     </article>
-  )
-}
-export default Product
+  );
+};
+export default Product;

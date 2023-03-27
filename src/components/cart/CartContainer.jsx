@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux"
 import CartItem from "./CartItem"
 import CartFooter from "./CartFooter"
 import { Link } from "react-router-dom"
+import { cartStore } from "../../Features/cartStore"
 
 const CartContainer = () => {
-  const cart = useSelector((state) => state.cart)
+  const items = cartStore((state) => state.items)
 
   return (
     <>
@@ -21,7 +21,7 @@ const CartContainer = () => {
           <h2 className="text-center text-xl capitalize bg-red-800/90 w-fit mx-auto text-white rounded-lg px-12 py-2">
             cart details
           </h2>
-          {cart.items.map((item) => {
+          {items.map((item) => {
             return <CartItem key={item.id} {...item} />
           })}
           <CartFooter />

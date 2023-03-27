@@ -3,16 +3,15 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
   Route,
-} from "react-router-dom"
-import CartPage from "./pages/CartPage"
-import ErrorPage from "./pages/ErrorPage"
-import HomePage from "./pages/HomePage"
-import ProductDetailPage from "./components/product/ProductDetailPage"
-import Root from "./pages/Root"
-import TestPage from "./pages/TestPage"
-import ProductsPage from "./pages/ProductsPage"
-import AboutusPage from "./pages/AboutusPage"
-
+} from "react-router-dom";
+import CartPage from "./pages/CartPage";
+import ErrorPage from "./pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import Root from "./pages/Root";
+import TestPage from "./pages/TestPage";
+import ProductsPage from "./pages/ProductsPage";
+import AboutusPage from "./pages/AboutusPage";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,8 +24,8 @@ const App = () => {
         <Route path="about" element={<AboutusPage />} />
       </Route>
     )
-  )
-  return <RouterProvider router={router} />
-}
+  );
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;

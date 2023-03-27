@@ -1,11 +1,34 @@
-import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
-import { useDispatch } from "react-redux"
+import { useState } from "react"
 import { Link } from "react-router-dom"
-import { removeItem, increase, decrease } from "../../Features/cartSlice"
+import { cartStore } from "../../Features/cartStore"
 import { formatPrice } from "../../utils/helpers"
+import QuantityCounter from "./QuantityCounter"
 
 const CartItem = ({ id, name, price, amount, image }) => {
-  const dispatch = useDispatch()
+  const [itemSubTotal, setItemSubTotal] = useState(price)
+
+  const increaseCartGrandTotal = cartStore(
+    (state) => state.increaseCartGrandTotal
+  )
+  const decreaseCartGrandTotal = cartStore(
+    (state) => state.decreaseCartGrandTotal
+  )
+  const removeItem = cartStore((state) => state.removeItem)
+
+  const quantityIncrease = () => {
+    setItemSubTotal(itemSubTotal + price)
+    increaseCartGrandTotal(price)
+  }
+
+  const quantityDecrease = () => {
+    setItemSubTotal(itemSubTotal - price)
+    decreaseCartGrandTotal(price)
+  }
+
+  const removeFromCart = (id) => {
+    decreaseCartGrandTotal(itemSubTotal)
+    removeItem(id)
+  }
 
   return (
     <article className="flex items-center justify-between text-xl my-6 bg-white hover:bg-gray-50 px-4 sm:px-8 py-6 rounded-md">
@@ -21,33 +44,21 @@ const CartItem = ({ id, name, price, amount, image }) => {
         <p className="text-gray-500 font-bold -mb-1">{formatPrice(price)}</p>
         <span
           className="capitalize cursor-pointer font-semibold text-red-600 hover:text-red-700 duration-500"
-          onClick={() => dispatch(removeItem(id))}
+          onClick={() => removeFromCart(id)}
         >
           remove
         </span>
       </div>
-      <div className="amount-control flex items-center space-x-2 justify-center">
-        <span
-          className="text-green-500 hover:text-green-700 text-[24px] sm:text-[44px] cursor-pointer duration-500"
-          onClick={() => dispatch(increase(id))}
-        >
-          <FiPlusSquare />
-        </span>
-        <p className="text-slate-800 w-4 h-4 p-2.5  rounded-sm flex items-center justify-center border-2 border-gray-300 sm:p-4 sm:w-7 sm:h-7">
-          {amount}
-        </p>
-        <span
-          className="text-red-500 hover:text-red-700 text-[24px] sm:text-[44px] cursor-pointer duration-500"
-          onClick={() => {
-            if (amount === 1) {
-              dispatch(removeItem(id))
-            }
-            dispatch(decrease(id))
-          }}
-        >
-          <FiMinusSquare />
-        </span>
+      {/*       need revamp
+       */}{" "}
+      <div className="p-4">
+        <h6>sub total</h6>
+        <span className="block mt-3">{formatPrice(itemSubTotal)}</span>
       </div>
+      <QuantityCounter
+        onIncreaseBtn={quantityIncrease}
+        onDecreaseBtn={quantityDecrease}
+      />
     </article>
   )
 }

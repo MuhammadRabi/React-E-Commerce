@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux"
 import Product from "./Product"
 import Loading from "../UI/Loading"
+import productStore from "../../Features/productStore"
 
-const ProductsContainer = () => {
-  const { productsList, isLoading } = useSelector((state) => state.products)
+const ProductsContainer = ({ tempProducts }) => {
+  const isLoading = productStore((state) => state.isLoading)
 
   if (isLoading) {
     return <Loading />
@@ -12,7 +12,7 @@ const ProductsContainer = () => {
   return (
     <>
       <section className="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-9">
-        {productsList.map((product) => {
+        {tempProducts.map((product) => {
           return <Product key={product.id} {...product} />
         })}
       </section>
