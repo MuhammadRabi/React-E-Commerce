@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+
 const Layout = ({ children }) => {
   return (
     <>
@@ -5,6 +7,6 @@ const Layout = ({ children }) => {
         {children}
       </main>
     </>
-  )
-}
-export default Layout
+  );
+};
+export default Layout;

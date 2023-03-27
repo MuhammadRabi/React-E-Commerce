@@ -1,8 +1,6 @@
-import ProductImages from "./ProductImages"
-import ProductRating from "./ProductRating"
-import { FaCartPlus } from "react-icons/fa"
-import { cartStore } from "../../Features/cartStore"
-
+import ProductImages from "./ProductImages";
+import ProductRating from "./ProductRating";
+import AddToCartBtn from "./AddToCartBtn";
 const ProductDetails = ({
   id,
   images,
@@ -14,8 +12,6 @@ const ProductDetails = ({
   rating,
   stock,
 }) => {
-  const addToCart = cartStore((state) => state.addToCart)
-
   return (
     <article className="grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-6">
       <ProductImages images={images} />
@@ -42,18 +38,10 @@ const ProductDetails = ({
         </div>
         <hr />
         {stock > 0 && (
-          <button
-            className="py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
-            onClick={() => {
-              addToCart({ id, name, price, images })
-            }}
-          >
-            <span>Add to cart</span>
-            <FaCartPlus className="text-2xl"></FaCartPlus>
-          </button>
+          <AddToCartBtn id={id} name={name} price={price} images={images} />
         )}
       </div>
     </article>
-  )
-}
-export default ProductDetails
+  );
+};
+export default ProductDetails;
