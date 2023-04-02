@@ -7,7 +7,7 @@ import AddToCartBtn from "./AddToCartBtn";
 const Product = ({ id, name, price, image, description }) => {
   const addItemToCart = (item) => {
     addToCart(item);
-    toast.success("Product added to cart!");
+    toast.success("Product added to cart!!");
   };
   const addToCart = cartStore((state) => state.addToCart);
 
