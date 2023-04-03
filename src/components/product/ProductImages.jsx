@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from "react";
 const ProductImages = ({ images = [[]] }) => {
-  const [mainImage, setMainImage] = useState(images[0])
+  const [mainImage, setMainImage] = useState(images[0]);
 
   return (
     <div className="p-2">
@@ -9,7 +9,7 @@ const ProductImages = ({ images = [[]] }) => {
         alt={mainImage.filename}
         className="mx-auto object-cover max-w-full h-[400px]"
       />
-      <div className="gallery mt-4 flex space-x-1 justify-center overflow-hidden">
+      <div className="flex justify-center mt-4 space-x-1 overflow-hidden gallery">
         {images.map((image, index) => {
           return (
             <img
@@ -21,10 +21,10 @@ const ProductImages = ({ images = [[]] }) => {
               }`}
               onClick={() => setMainImage(images[index])}
             />
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
-export default ProductImages
+  );
+};
+export default ProductImages;

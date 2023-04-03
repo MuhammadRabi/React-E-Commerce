@@ -1,12 +1,12 @@
-import SearchBar from "./UI/SearchBar"
+import SearchBar from "./UI/SearchBar";
 
 const FilterBar = ({ selectedCategoryItem, setSelectedCategoryItem }) => {
   const onCategoryChange = (item) => {
-    setSelectedCategoryItem([...selectedCategoryItem, item])
-  }
+    setSelectedCategoryItem([...selectedCategoryItem, item]);
+  };
 
   return (
-    <div className="h-96 border-2 border-zinc-200 p-4 rounded-md">
+    <div className="p-4 border-2 rounded-md h-96 border-zinc-200">
       <h2 className="text-center">Filter</h2>
       <div className="flex flex-col space-y-4">
         <SearchBar />
@@ -88,6 +88,6 @@ const FilterBar = ({ selectedCategoryItem, setSelectedCategoryItem }) => {
         </section>
       </div>
     </div>
-  )
-}
-export default FilterBar
+  );
+};
+export default FilterBar;

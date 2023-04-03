@@ -11,7 +11,7 @@ const AddToCartBtn = ({ id, name, price, image }) => {
   };
   return (
     <button
-      className="mx-auto py-2 px-6 rounded-md text-white bg-green-500 flex items-center space-x-4 w-fit cursor-pointer outline-none hover:bg-green-700 duration-300"
+      className="flex items-center px-6 py-2 mx-auto space-x-4 text-white duration-300 bg-green-500 rounded-md outline-none cursor-pointer w-fit hover:bg-green-700"
       onClick={() => {
         addItemToCart({ id, name, price, image });
       }}

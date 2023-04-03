@@ -13,12 +13,12 @@ const ProductDetails = ({
   stock,
 }) => {
   return (
-    <article className="grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-6">
+    <article className="grid items-center justify-center grid-cols-1 mt-6 md:grid-cols-2">
       <ProductImages images={images} />
-      <div className="flex flex-col justify-center space-y-4 h-full px-12 my-4">
+      <div className="flex flex-col justify-center h-full px-12 my-4 space-y-4">
         <h1 className="text-4xl font-semibold capitalize">{name} </h1>
         <ProductRating rating={rating} />
-        <p className="text-red-700 text-2xl font-bold">
+        <p className="text-2xl font-bold text-red-700">
           ${(price / 100).toFixed(2)}
         </p>
         <p>{description}</p>

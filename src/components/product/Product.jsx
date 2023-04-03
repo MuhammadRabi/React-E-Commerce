@@ -12,22 +12,22 @@ const Product = ({ id, name, price, image, description }) => {
   const addToCart = cartStore((state) => state.addToCart);
 
   return (
-    <article className="bg-gray-50 py-6 px-4 rounded-md border-slate-300 border shadow-lg">
+    <article className="px-4 py-6 border rounded-md shadow-lg bg-gray-50 border-slate-300">
       <figure className="flex flex-col space-y-6">
         <Link to={`/products/${id}`} className="mt-2 cursor-pointer">
-          <img src={image} alt={name} className="w-full object-cover h-44" />
+          <img src={image} alt={name} className="object-cover w-full h-44" />
         </Link>
         <figcaption className="text-center">
-          <h2 className="font-bold mb-2 capitalize">{name.substring(0, 25)}</h2>
-          <p className="mb-4 text-gray-500 text-sm">
+          <h2 className="mb-2 font-bold capitalize">{name.substring(0, 25)}</h2>
+          <p className="mb-4 text-sm text-gray-500">
             {description.substring(0, 50)}
           </p>
-          <span className="text-red-600 text-xl font-bold">
+          <span className="text-xl font-bold text-red-600">
             {formatPrice(price)}
           </span>
         </figcaption>
       </figure>
-      <div className="flex flex-col text-center w-full mt-2">
+      <div className="flex flex-col w-full mt-2 text-center">
         <AddToCartBtn id={id} name={name} price={price} image={image} />
       </div>
     </article>

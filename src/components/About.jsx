@@ -1,13 +1,13 @@
 /* import about from "../assets/images/about.jpg"
  */
-import about from "../assets/images/about.jpg"
-import SectionHeadline from "./UI/SectionHeadline"
+import about from "../assets/images/about.jpg";
+import SectionHeadline from "./UI/SectionHeadline";
 
 const About = () => {
   return (
     <>
       <SectionHeadline name="About Us" />
-      <div className="flex flex-col lg:flex-row justify-around items-center gap-12 mt-16">
+      <div className="flex flex-col items-center justify-around gap-12 mt-16 lg:flex-row">
         <img
           src={about}
           className="w-full h-[450px] rounded-md object-cover flex-1"
@@ -26,6 +26,6 @@ const About = () => {
         </article>
       </div>
     </>
-  )
-}
-export default About
+  );
+};
+export default About;

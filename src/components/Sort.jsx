@@ -1,38 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const Sort = ({ tempProducts, handleSort, sort }) => {
-  /*   const [sort, setSort] = useState("name-a")
-
-  let tempProducts = [...containerData]
-  if (sort === "price-lowest") {
-    tempProducts = containerData.sort((a, b) => {
-      return a.price - b.price
-    })
-  } else if (sort === "price-highest") {
-    tempProducts = containerData.sort((a, b) => {
-      return b.price - a.price
-    })
-  } else if (sort === "name-a") {
-    tempProducts = containerData.sort((a, b) => {
-      return a.name.localeCompare(b.name)
-    })
-  } else if (sort === "name-z") {
-    tempProducts = containerData.sort((a, b) => {
-      return b.name.localeCompare(a.name)
-    })
-  }
-
-  const handleSort = (e) => {
-    const value = e.target.value
-    setSort(value)
-    console.log(value)
-  }
- */
   return (
     <>
-      <section className="flex flex-col  space-y-6 mt-12 justify-center items-center space-x-8 md:flex-row md:space-y-0">
+      <section className="flex flex-col items-center justify-center mt-12 space-x-8 space-y-6 md:flex-row md:space-y-0">
         <p>{tempProducts.length} products found!</p>
-        <hr className="hidden md:block w-64 bg-teal-700" />
+        <hr className="hidden w-64 bg-teal-700 md:block" />
         <form>
           <label htmlFor="sort">sort products by :</label>
           <select
@@ -50,7 +23,7 @@ const Sort = ({ tempProducts, handleSort, sort }) => {
         </form>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Sort
+export default Sort;
