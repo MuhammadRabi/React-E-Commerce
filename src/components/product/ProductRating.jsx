@@ -1,4 +1,4 @@
-import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs"
+import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
 const ProductRating = ({ rating }) => {
   return (
@@ -12,6 +12,6 @@ const ProductRating = ({ rating }) => {
       </span>
       <p className="text-gray-600">rating here</p>
     </>
-  )
-}
-export default ProductRating
+  );
+};
+export default ProductRating;
