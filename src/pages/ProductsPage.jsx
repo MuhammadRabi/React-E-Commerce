@@ -1,42 +1,26 @@
-import { useEffect, useState } from "react";
-import FilterBar from "../components/FilterBar";
+import { useState } from "react";
+import FilterProducts from "../components/FilterProducts";
+import SearchBar from "../components/UI/SearchBar";
 import ProductsContainer from "../components/product/ProductsContainer";
 import Sort from "../components/Sort";
-import productStore from "../Features/productStore";
-import SearchBar from "../components/UI/SearchBar";
+import useFilterProducts from "../hooks/useFilterProducts";
 
 const ProductsPage = () => {
-  const productsList = productStore((state) => state.productsList);
-  const [containerData, setcontainerData] = useState(productsList);
-  const [selectedCategoryItem, setSelectedCategoryItem] = useState([]);
   const [sort, setSort] = useState("name-a");
   const [searchTerm, setSearchTerm] = useState("");
-  /*   const [selectedCompanyItem, setSelectedCompanyItem] = useState([])
-   */
-  // filter function
-  const categoryFilter = () => {
-    let results = [...productsList];
-    let filteredCategoryResult;
-    if (selectedCategoryItem) {
-      filteredCategoryResult = results.filter((item) => {
-        if (selectedCategoryItem.includes(item.category)) {
-          return item;
-        }
-        return null;
-      });
-      setcontainerData(filteredCategoryResult);
-    }
-  };
-
-  //const companyFilter = () => {}
-
-  useEffect(() => {
-    if (selectedCategoryItem.length > 0) {
-      categoryFilter();
-    }
-  }, [selectedCategoryItem]);
+  const {
+    selectedCategoryItem,
+    setSelectedCategoryItem,
+    setSelectedCompanyItem,
+    selectedCompanyItem,
+    containerData,
+  } = useFilterProducts();
 
   // sorting
+  const handleSort = (e) => {
+    const sortValue = e.target.value;
+    setSort(sortValue);
+  };
 
   let tempProducts = [...containerData];
   if (sort === "price-lowest") {
@@ -57,11 +41,6 @@ const ProductsPage = () => {
     });
   }
 
-  const handleSort = (e) => {
-    const sortValue = e.target.value;
-    setSort(sortValue);
-  };
-
   const handleSearch = (e) => {
     const searchValue = e.target.value;
     setSearchTerm(searchValue);
@@ -77,12 +56,12 @@ const ProductsPage = () => {
       <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
       <Sort handleSort={handleSort} tempProducts={tempProducts} sort={sort} />
       <div className="grid gap-12 sm:grid-cols-[200px,1fr]">
-        <FilterBar
-          /*  selectedCompanyItem={selectedCompanyItem}
-          setSelectedCompanyItem={setSelectedCompanyItem} 
-          clearFilters={clearFilters}*/
+        <FilterProducts
           selectedCategoryItem={selectedCategoryItem}
           setSelectedCategoryItem={setSelectedCategoryItem}
+          selectedCompanyItem={selectedCompanyItem}
+          setSelectedCompanyItem={setSelectedCompanyItem}
+          /*  clearFilters={clearFilters}*/
         />
         <ProductsContainer tempProducts={tempProducts} />
       </div>
