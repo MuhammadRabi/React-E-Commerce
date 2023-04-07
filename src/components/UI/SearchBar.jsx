@@ -1,25 +1,15 @@
-import { useEffect } from "react"
-import productStore from "../../Features/productStore"
-
-const SearchBar = () => {
-  const setSearchQuery = productStore((state) => state.setSearchQuery)
-  const searchQuery = productStore((state) => state.searchQuery)
-
-  useEffect(() => {
-    setSearchQuery(searchQuery)
-  }, [searchQuery])
-
+const SearchBar = ({ searchTerm, handleSearch }) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="text-center">
+    <form onSubmit={(e) => e.preventDefault()} className="text-center ">
       <input
-        className="w-full mx-auto p-2 rounded-md border"
+        className="w-3/4 p-2 mx-auto border rounded-md lg:w-1/2"
         name="search"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        value={searchTerm}
+        onChange={handleSearch}
         placeholder="find your product!"
       />
     </form>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

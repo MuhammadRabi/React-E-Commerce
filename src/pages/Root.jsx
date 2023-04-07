@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const Root = () => {
-  //const cartStore((state)=>
   const isModalOpen = modalStore((state) => state.isModalOpen);
 
   const { getProducts } = productStore((state) => ({
@@ -17,22 +16,10 @@ const Root = () => {
     getProducts: state.getProducts,
     updateSort: state.updateSort,
   }));
-  /* 
-  useEffect(() => {
-      addToLocalStorage(cart.items)
-    calculateTotalPrice()
-  }, [cart.items])
- */
+
   useEffect(() => {
     getProducts();
   }, []);
-
-  const setSearchQuery = productStore((state) => state.setSearchQuery);
-  const searchQuery = productStore((state) => state.searchQuery);
-
-  useEffect(() => {
-    setSearchQuery(searchQuery);
-  }, [searchQuery]);
 
   return (
     <main className="relative">
@@ -41,7 +28,7 @@ const Root = () => {
       <Layout>
         <Outlet />
       </Layout>
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer position="top-center" autoClose={2000} />
     </main>
   );
 };
