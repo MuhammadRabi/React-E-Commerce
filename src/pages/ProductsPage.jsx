@@ -1,67 +1,80 @@
-import { useEffect, useState } from "react"
-import FilterBar from "../components/FilterBar"
-import ProductsContainer from "../components/product/ProductsContainer"
-import Sort from "../components/Sort"
-import productStore from "../Features/productStore"
+import { useEffect, useState } from "react";
+import FilterBar from "../components/FilterBar";
+import ProductsContainer from "../components/product/ProductsContainer";
+import Sort from "../components/Sort";
+import productStore from "../Features/productStore";
+import SearchBar from "../components/UI/SearchBar";
 
 const ProductsPage = () => {
-  const productsList = productStore((state) => state.productsList)
-  const [containerData, setcontainerData] = useState(productsList)
-  const [selectedCategoryItem, setSelectedCategoryItem] = useState([])
-  const [sort, setSort] = useState("name-a")
+  const productsList = productStore((state) => state.productsList);
+  const [containerData, setcontainerData] = useState(productsList);
+  const [selectedCategoryItem, setSelectedCategoryItem] = useState([]);
+  const [sort, setSort] = useState("name-a");
+  const [searchTerm, setSearchTerm] = useState("");
   /*   const [selectedCompanyItem, setSelectedCompanyItem] = useState([])
    */
   // filter function
   const categoryFilter = () => {
-    let results = [...productsList]
-    let filteredCategoryResult
+    let results = [...productsList];
+    let filteredCategoryResult;
     if (selectedCategoryItem) {
       filteredCategoryResult = results.filter((item) => {
         if (selectedCategoryItem.includes(item.category)) {
-          return item
+          return item;
         }
-        return null
-      })
-      setcontainerData(filteredCategoryResult)
+        return null;
+      });
+      setcontainerData(filteredCategoryResult);
     }
-  }
+  };
 
   //const companyFilter = () => {}
 
   useEffect(() => {
     if (selectedCategoryItem.length > 0) {
-      categoryFilter()
+      categoryFilter();
     }
-  }, [selectedCategoryItem])
+  }, [selectedCategoryItem]);
 
   // sorting
 
-  let tempProducts = [...containerData]
+  let tempProducts = [...containerData];
   if (sort === "price-lowest") {
     tempProducts = containerData.sort((a, b) => {
-      return a.price - b.price
-    })
+      return a.price - b.price;
+    });
   } else if (sort === "price-highest") {
     tempProducts = containerData.sort((a, b) => {
-      return b.price - a.price
-    })
+      return b.price - a.price;
+    });
   } else if (sort === "name-a") {
     tempProducts = containerData.sort((a, b) => {
-      return a.name.localeCompare(b.name)
-    })
+      return a.name.localeCompare(b.name);
+    });
   } else if (sort === "name-z") {
     tempProducts = containerData.sort((a, b) => {
-      return b.name.localeCompare(a.name)
-    })
+      return b.name.localeCompare(a.name);
+    });
   }
 
   const handleSort = (e) => {
-    const value = e.target.value
-    setSort(value)
-  }
+    const sortValue = e.target.value;
+    setSort(sortValue);
+  };
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+  };
+
+  // search products
+  tempProducts = tempProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
+      <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
       <Sort handleSort={handleSort} tempProducts={tempProducts} sort={sort} />
       <div className="grid gap-12 sm:grid-cols-[200px,1fr]">
         <FilterBar
@@ -74,6 +87,6 @@ const ProductsPage = () => {
         <ProductsContainer tempProducts={tempProducts} />
       </div>
     </>
-  )
-}
-export default ProductsPage
+  );
+};
+export default ProductsPage;
