@@ -22,7 +22,7 @@ const Promotional = () => {
   ];
 
   return (
-    <section className="flex justify-around w-full mx-auto my-12">
+    <section className="flex justify-around items-center w-full mx-auto my-12">
       {promData.map((item) => {
         return (
           <article
