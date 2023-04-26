@@ -38,7 +38,9 @@ const ProductDetails = ({
         </div>
         <hr />
         {stock > 0 && (
-          <AddToCartBtn id={id} name={name} price={price} images={images} />
+          <div className="mr-auto">
+            <AddToCartBtn id={id} name={name} price={price} images={images} />
+          </div>
         )}
       </div>
     </article>

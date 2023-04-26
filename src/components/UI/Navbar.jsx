@@ -1,15 +1,15 @@
-import { Link, NavLink } from "react-router-dom"
-import Cart from "../cart/Cart"
-import { MdMenu } from "react-icons/md"
-
+import { Link, NavLink } from "react-router-dom";
+import Cart from "../cart/Cart";
+import { MdMenu } from "react-icons/md";
+import Login from "../auth/Login";
 const Navbar = () => {
   return (
     <>
-      <nav className="bg-teal-600 font-bold capitalize py-3 px-10 text-white flex justify-between items-center">
-        <h3 className="text-xl md:text-2xl px-4">
+      <nav className="flex items-center justify-between px-10 py-3 font-bold text-white capitalize bg-teal-600">
+        <h3 className="px-4 text-xl md:text-2xl">
           <Link to="/">LOGO</Link>
         </h3>
-        <ul className="hidden flex-1 justify-center lg:flex space-x-6">
+        <ul className="justify-center flex-1 hidden space-x-6 lg:flex">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -21,11 +21,12 @@ const Navbar = () => {
           </li>
         </ul>
         <Cart />
-        <span className="lg:hidden block cursor-pointer text-5xl">
+        <span className="block text-5xl cursor-pointer lg:hidden">
           <MdMenu />
         </span>
+        <Login />
       </nav>
     </>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;
