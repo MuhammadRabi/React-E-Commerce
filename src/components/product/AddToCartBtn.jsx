@@ -11,12 +11,12 @@ const AddToCartBtn = ({ id, name, price, image }) => {
   };
   return (
     <button
-      className="flex items-center px-6 py-2 mx-auto space-x-4 text-white duration-300 bg-green-500 rounded-md outline-none cursor-pointer w-fit hover:bg-green-700"
+      className="flex items-center px-4 py-2 mx-auto text-white duration-300 bg-green-500 rounded-md outline-none cursor-pointer w-fit hover:bg-green-700"
       onClick={() => {
         addItemToCart({ id, name, price, image });
       }}
     >
-      <span>Add to cart</span>
+      {/* <span>Add to cart</span> */}
       <FaCartPlus className="text-2xl"></FaCartPlus>
     </button>
   );
