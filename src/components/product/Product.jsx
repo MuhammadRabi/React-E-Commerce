@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
-import { cartStore } from "../../Features/cartStore";
-import { toast } from "react-toastify";
-import AddToCartBtn from "./AddToCartBtn";
+import { FaCartPlus } from "react-icons/fa";
+import useAddtoCart from "../../hooks/useAddtoCart";
 
 const Product = ({ id, name, price, image, description }) => {
-  const addItemToCart = (item) => {
-    addToCart(item);
-    toast.success("Product added to cart!!");
-  };
-  const addToCart = cartStore((state) => state.addToCart);
+  const product = { id, name, price, image };
+  const { addItemToCart } = useAddtoCart(product);
 
   return (
     <article className="px-4 py-6 border rounded-md shadow-lg bg-gray-50 border-slate-300">
@@ -28,7 +24,12 @@ const Product = ({ id, name, price, image, description }) => {
         </figcaption>
       </figure>
       <div className="flex flex-col w-full mt-2 text-center">
-        <AddToCartBtn id={id} name={name} price={price} image={image} />
+        <button
+          className="flex items-center px-4 py-2 mx-auto text-white duration-300 bg-green-500 rounded-md outline-none cursor-pointer w-fit hover:bg-green-700"
+          onClick={() => addItemToCart(product)}
+        >
+          <FaCartPlus className="text-2xl"></FaCartPlus>
+        </button>
       </div>
     </article>
   );
