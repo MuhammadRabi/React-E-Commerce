@@ -5,9 +5,10 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Simple 16 column grid
-        275: "repeat(auto-fill, minmax(275px, 1fr))",
+        275: "repeat(auto-fit, minmax(275px, 1fr))",
+        200: "repeat(auto-fit, minmax(200px, 1fr))",
       },
     },
   },
   plugins: [],
-}
+};

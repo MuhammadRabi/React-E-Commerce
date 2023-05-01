@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/UI/Navbar";
-import Layout from "../components/UI/Layout";
-import Footer from "../components/UI/Footer";
+import Footer from "../components/footer/Footer";
 import Modal from "../components/UI/Modal";
 import { useEffect } from "react";
 import productStore from "../Features/productStore";
@@ -25,11 +24,7 @@ const Root = () => {
     <main className="relative">
       {isModalOpen && <Modal />}
       <Navbar />
-      {/*       <Layout>
-       */}{" "}
       <Outlet />
-      {/*       </Layout>
-       */}{" "}
       <Footer />
       <ToastContainer position="top-center" autoClose={2000} />
     </main>
