@@ -9,9 +9,13 @@ const Product = ({ id, name, price, image, description }) => {
 
   return (
     <article className="px-4 py-6 border rounded-md shadow-lg bg-gray-50 border-slate-300">
-      <figure className="flex flex-col space-y-6">
+      <figure className="flex flex-col space-y-6 overflow-hidden">
         <Link to={`/products/${id}`} className="mt-2 cursor-pointer">
-          <img src={image} alt={name} className="object-cover w-full h-44" />
+          <img
+            src={image}
+            alt={name}
+            className="object-cover w-full duration-300 h-44 hover:scale-125"
+          />
         </Link>
         <figcaption className="text-center">
           <h2 className="mb-2 font-bold capitalize">{name.substring(0, 25)}</h2>

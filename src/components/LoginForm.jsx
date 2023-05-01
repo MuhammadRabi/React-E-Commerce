@@ -10,7 +10,7 @@ const LoginForm = () => {
   };
 
   return (
-    <article className="my-6 basis-5/12">
+    <article className="my-6 md:w-5/12">
       <form action="" className="mx-auto w-3/4 space-y-6">
         <LoginFormTitle />
         <h2 className="text-4xl font-semibold capitalize">

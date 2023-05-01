@@ -1,28 +1,34 @@
-import { useEffect } from "react"
-import CartContainer from "../components/cart/CartContainer"
-import EmptyCart from "../components/cart/emptyCart"
-import { cartStore } from "../Features/cartStore"
+import { useEffect } from "react";
+import CartContainer from "../components/cart/CartContainer";
+import EmptyCart from "../components/cart/emptyCart";
+import { cartStore } from "../Features/cartStore";
+import Layout from "../components/UI/Layout";
 
 const CartPage = () => {
   // replace it with itemsInCart
-  const itemsInCart = cartStore((state) => state.items)
-  const setCartGrandTotal = cartStore((state) => state.setCartGrandTotal)
+  const itemsInCart = cartStore((state) => state.items);
+  const setCartGrandTotal = cartStore((state) => state.setCartGrandTotal);
 
   const calculateGrandTotal = () => {
     const grandTotal = itemsInCart
       .map((item) => {
-        return item.price
+        return item.price;
       })
       .reduce((prev, curr) => {
-        return prev + curr
-      })
-    setCartGrandTotal(grandTotal)
-  }
+        return prev + curr;
+      });
+    console.log(grandTotal);
+    setCartGrandTotal(grandTotal);
+  };
 
   useEffect(() => {
-    itemsInCart.length !== 0 && calculateGrandTotal()
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    itemsInCart.length !== 0 && calculateGrandTotal();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <>{itemsInCart.length === 0 ? <EmptyCart /> : <CartContainer />}</>
-}
-export default CartPage
+  return (
+    <Layout>
+      {itemsInCart.length === 0 ? <EmptyCart /> : <CartContainer />}
+    </Layout>
+  );
+};
+export default CartPage;

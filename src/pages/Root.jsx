@@ -25,9 +25,11 @@ const Root = () => {
     <main className="relative">
       {isModalOpen && <Modal />}
       <Navbar />
-      <Layout>
-        <Outlet />
-      </Layout>
+      {/*       <Layout>
+       */}{" "}
+      <Outlet />
+      {/*       </Layout>
+       */}{" "}
       <Footer />
       <ToastContainer position="top-center" autoClose={2000} />
     </main>

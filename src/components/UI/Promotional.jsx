@@ -22,14 +22,14 @@ const Promotional = () => {
   ];
 
   return (
-    <section className="flex justify-around items-center w-full mx-auto my-12">
+    <section className="flex flex-col items-start justify-around w-full mx-auto my-12 md:items-center md:flex-row">
       {promData.map((item) => {
         return (
           <article
             key={item.id}
-            className="flex items-center px-4 space-x-2 border-l border-l-slate-300"
+            className="flex items-center px-4 mb-6 space-x-2 border-l border-l-slate-300"
           >
-            <div className="p-2 text-4xl text-white bg-teal-600 rounded-lg icon">
+            <div className="p-2 text-xl text-white bg-teal-600 rounded-lg md:text-4xl icon">
               {item.icon}
             </div>
             <p className="text-xl">{item.title}</p>

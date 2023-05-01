@@ -1,6 +1,6 @@
-import { create } from "zustand"
-import { devtools } from "zustand/middleware"
-import { persist } from "zustand/middleware"
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 const store = (set) => ({
   items: [],
@@ -9,7 +9,7 @@ const store = (set) => ({
   addToCart: (item) => {
     set((state) => ({
       items: [...state.items, item],
-    }))
+    }));
   },
   // working
   clearCart: () =>
@@ -20,7 +20,7 @@ const store = (set) => ({
   removeItem: (id) =>
     set((state) => ({
       items: state.items.filter((item) => {
-        return item.id !== id
+        return item.id !== id;
       }),
     })),
   // calculate total price of the cart
@@ -34,6 +34,8 @@ const store = (set) => ({
     })),
   decreaseCartGrandTotal: (price) =>
     set((state) => ({ cartGrandTotal: state.cartGrandTotal - price })),
-})
+});
 
-export const cartStore = create(persist(devtools(store), { name: "cartStore" }))
+export const cartStore = create(
+  persist(devtools(store), { name: "cartStore" })
+);

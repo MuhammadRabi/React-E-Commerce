@@ -4,6 +4,7 @@ import SearchBar from "../components/UI/SearchBar";
 import ProductsContainer from "../components/product/ProductsContainer";
 import Sort from "../components/Sort";
 import useFilterProducts from "../hooks/useFilterProducts";
+import Layout from "../components/UI/Layout";
 
 const ProductsPage = () => {
   const [sort, setSort] = useState("name-a");
@@ -52,7 +53,7 @@ const ProductsPage = () => {
   );
 
   return (
-    <>
+    <Layout>
       <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
       <Sort handleSort={handleSort} tempProducts={tempProducts} sort={sort} />
       <div className="grid gap-12 sm:grid-cols-[200px,1fr]">
@@ -65,7 +66,7 @@ const ProductsPage = () => {
         />
         <ProductsContainer tempProducts={tempProducts} />
       </div>
-    </>
+    </Layout>
   );
 };
 export default ProductsPage;
