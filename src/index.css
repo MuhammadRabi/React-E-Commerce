@@ -7,7 +7,9 @@
     .modal-btn{
     @apply  px-4 py-0.5 text-xl font-semibold text-center capitalize border-2 rounded-md duration-700 border-red-700 hover:text-white hover:bg-red-700 
     }
-
+    .section-layout{
+    @apply py-6 md:py-12 px-2.5 md:px-6 lg:px-24 xl:px-36
+    }
  
 }
 body{
