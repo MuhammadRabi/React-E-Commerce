@@ -20,7 +20,9 @@ const ProductDetails = ({
     <article className="grid items-center justify-center grid-cols-1 mt-6 md:grid-cols-2">
       <ProductImages images={images} />
       <div className="flex flex-col justify-center h-full px-12 my-4 space-y-4">
-        <h1 className="text-4xl font-semibold capitalize">{name} </h1>
+        <h1 className="text-4xl font-semibold text-teal-600 capitalize">
+          {name}{" "}
+        </h1>
         <ProductRating rating={rating} />
         <p className="text-2xl font-bold text-red-700">
           ${(price / 100).toFixed(2)}
@@ -44,11 +46,11 @@ const ProductDetails = ({
         {stock > 0 && (
           <div className="">
             <button
-              className="flex  items-center  outline-none mt-5 duration-300 rounded-md bg-green-500 text-white px-4 py-2 hover:bg-green-700"
+              className="flex items-center px-4 py-2 mt-5 text-white duration-300 bg-teal-600 rounded-md outline-none hover:bg-teal-700"
               onClick={() => addItemToCart(product)}
             >
               <FaCartPlus className="mr-3 text-2xl" />
-              add to cart
+              Add to cart
             </button>
           </div>
         )}

@@ -8,7 +8,7 @@
     @apply  px-4 py-0.5 text-xl font-semibold text-center capitalize border-2 rounded-md duration-700 border-red-700 hover:text-white hover:bg-red-700 
     }
     .section-layout{
-    @apply py-6 md:py-12 px-2.5 md:px-6 lg:px-24 xl:px-36
+    @apply py-6 md:py-12 px-1 md:px-3 lg:px-6 xl:px-24
     }
  
 }
@@ -32,4 +32,54 @@ nav ul a.active{
 
 .quote{
     background-image: url("assets/images/cover.jpg");
+}
+.hero{
+    background-image: url('assets/images/hero1.jpg');
+    background-repeat: no-repeat;
+    background-position:bottom;
+    background-size: cover;
+    -webkit-mask-image: linear-gradient(#000 70%, transparent);
+     mask-image: linear-gradient(#000 70%, transparent); 
+}
+
+/* animations */
+
+@-webkit-keyframes bounceInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }

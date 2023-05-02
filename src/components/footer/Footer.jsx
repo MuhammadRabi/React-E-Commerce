@@ -4,7 +4,7 @@ import Socials from "./Socials";
 import { listOne, listTwo, itemBoxes } from "./data";
 const Footer = () => {
   return (
-    <footer className="w-full px-6 pt-24 pb-6 md:px-24 bg-zinc-900">
+    <footer className="w-full px-6 py-6 md:px-24 bg-zinc-900">
       <div className="grid justify-center gap-12 mx-auto mt-6 grid-cols-275">
         <FooterColumn>
           <FooterTitle title="about us" />

@@ -1,6 +1,6 @@
 import Button from "./UI/Button";
 import resting from "../assets/images/resting-chair.png";
-const Test = () => {
+const Blog = () => {
   return (
     <section className="bg-teal-800 flex-wrap py-6 md:py-12 items-center justify-between px-2.5 md:px-6 lg:px-24 xl:px-36 flex">
       <div className="flex flex-col w-1/2 p-2 space-y-12 text-white md:p-16 details">
@@ -18,4 +18,4 @@ const Test = () => {
     </section>
   );
 };
-export default Test;
+export default Blog;

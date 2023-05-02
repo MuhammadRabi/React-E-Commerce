@@ -11,7 +11,7 @@ const ProductsContainer = ({ tempProducts }) => {
 
   return (
     <>
-      <section className="grid mt-12 md:grid-cols-2 xl:grid-cols-3 gap-9">
+      <section className="grid justify-center row-span-full col-span-full lg:col-span-6 md:grid-cols-2 xl:grid-cols-3 gap-9">
         {tempProducts.map((product) => {
           return <Product key={product.id} {...product} />;
         })}

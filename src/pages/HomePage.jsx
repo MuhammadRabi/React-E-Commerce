@@ -1,5 +1,5 @@
 import Quote from "../components/Quote";
-import Test from "../components/Test";
+import Blog from "../components/Blog";
 import Services from "../components/Services";
 import Layout from "../components/UI/Layout";
 import Promotional from "../components/UI/Promotional";
@@ -15,7 +15,7 @@ const HomePage = () => {
         <FeaturedProducts />
       </Layout>
       <Quote />
-      <Test />
+      <Blog />
       <Services />
     </>
   );

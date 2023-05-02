@@ -19,16 +19,20 @@ const FilterProducts = ({
   const allCompanies = [...new Set(productsList.map((c) => c.company))];
 
   return (
-    <div className="p-4 border-2 rounded-md h-96 border-zinc-200">
-      <div className="flex justify-between mb-5 capitalize">
+    <aside className="hidden col-span-2 row-span-1 row-start-1 bg-white border-2 rounded-lg lg:block border-zinc-50">
+      <div className="p-3 text-xl font-medium text-white capitalize bg-teal-600 rounded-t-lg">
+        categories
+      </div>
+      <div className="flex justify-between p-4 capitalize">
         <h2 className="text-center">Filter</h2>
         <span className="font-medium text-red-400 duration-200 cursor-pointer hover:text-red-600">
-          clear
+          clear filters
         </span>
       </div>
-      <div className="flex flex-col space-y-6">
+      <hr />
+      <div className="flex flex-col p-4 space-y-6">
         <article>
-          <h3 className="mb-2 capitalize">select category:</h3>
+          <h3 className="my-2 capitalize">select category:</h3>
           {allCategories.map((cat, i) => {
             return (
               <div key={i} className="mb-1">
@@ -46,6 +50,7 @@ const FilterProducts = ({
             );
           })}
         </article>
+        <hr />
         <article>
           <label htmlFor="company" className="block mb-2 capitalize">
             select company:
@@ -53,7 +58,7 @@ const FilterProducts = ({
           <select
             name="company"
             id="company"
-            className="outline-none"
+            className="p-2 rounded-md outline-none bg-slate-50"
             onChange={(e) => onCompanyChange(e.target.value)}
           >
             {allCompanies.map((company, i) => {
@@ -69,12 +74,8 @@ const FilterProducts = ({
             })}
           </select>
         </article>
-        {/*  <section>
-          <label htmlFor="price">Price</label>
-          <input type="range" max="" min="" />
-        </section> */}
       </div>
-    </div>
+    </aside>
   );
 };
 export default FilterProducts;

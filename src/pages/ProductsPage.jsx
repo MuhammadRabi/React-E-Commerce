@@ -56,7 +56,7 @@ const ProductsPage = () => {
     <Layout>
       <SearchBar searchTerm={searchTerm} handleSearch={handleSearch} />
       <Sort handleSort={handleSort} tempProducts={tempProducts} sort={sort} />
-      <div className="grid gap-12 sm:grid-cols-[200px,1fr]">
+      <div className="grid grid-cols-8 grid-rows-4 gap-8 mt-12 lg:gap-12">
         <FilterProducts
           selectedCategoryItem={selectedCategoryItem}
           setSelectedCategoryItem={setSelectedCategoryItem}
