@@ -7,6 +7,7 @@ import productStore from "../Features/productStore";
 import { modalStore } from "../Features/modalStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import ScrollTop from "../components/UI/ScrollTop";
 
 const Root = () => {
   const isModalOpen = modalStore((state) => state.isModalOpen);
@@ -26,6 +27,7 @@ const Root = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <ScrollTop />
       <ToastContainer position="top-center" autoClose={2000} />
     </main>
   );
