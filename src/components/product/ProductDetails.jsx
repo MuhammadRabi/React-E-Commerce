@@ -2,6 +2,8 @@ import ProductImages from "./ProductImages";
 import ProductRating from "./ProductRating";
 import { FaCartPlus } from "react-icons/fa";
 import useAddtoCart from "../../hooks/useAddtoCart";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 const ProductDetails = ({
   id,
   images,
@@ -24,10 +26,12 @@ const ProductDetails = ({
           {name}{" "}
         </h1>
         <ProductRating rating={rating} />
-        <p className="text-2xl font-bold text-red-700">
-          ${(price / 100).toFixed(2)}
-        </p>
-        <p>{description}</p>
+        {(
+          <p className="text-2xl font-bold text-red-700">
+            ${(price / 100).toFixed(2)}
+          </p>
+        ) || <Skeleton />}
+        {<p>{description}</p> || <Skeleton count={6} width={200} />}
         <div className="flex flex-col space-y-2">
           <p>
             <span className="font-bold">Category : </span>

@@ -1,14 +1,17 @@
 import productStore from "../../Features/productStore";
 import SectionHeadline from "../UI/SectionHeadline";
 import Product from "./Product";
+import ProductSkeleton from "./ProductSkeleton";
 
 const FeaturedProducts = () => {
   const featuredProducts = productStore((state) => state.featuredProducts);
+  const isLoading = productStore((state) => state.isLoading);
 
   return (
     <>
       <SectionHeadline name="Featured Products" />
-      <section className="grid gap-6 mt-12 sm:mx-8 grid-cols-275 md:mx-16 md:gap-8">
+      <section className="grid justify-center gap-6 mt-12 sm:mx-8 grid-cols-275 md:mx-16 md:gap-8">
+        {isLoading && <ProductSkeleton cards={4} />}
         {featuredProducts.slice(0, 4).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
