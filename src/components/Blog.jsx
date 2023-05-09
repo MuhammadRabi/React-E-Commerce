@@ -1,5 +1,5 @@
 import Button from "./UI/Button";
-import resting from "../assets/images/resting-chair.png";
+import resting from "../assets/images/chair.png";
 const Blog = () => {
   return (
     <section className="bg-teal-800 flex-wrap py-6 md:py-12 items-center justify-between px-2.5 md:px-6 lg:px-24 xl:px-36 flex">

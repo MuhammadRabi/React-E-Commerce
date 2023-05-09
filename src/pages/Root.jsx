@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/UI/Navbar";
+import Sidebar from "../components/UI/Sidebar";
 import Footer from "../components/footer/Footer";
 import Modal from "../components/UI/Modal";
 import { useEffect } from "react";
@@ -25,6 +26,7 @@ const Root = () => {
     <main className="relative">
       {isModalOpen && <Modal />}
       <Navbar />
+      <Sidebar />
       <Outlet />
       <Footer />
       <ScrollTop />

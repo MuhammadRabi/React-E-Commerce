@@ -1,7 +1,8 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
 export const modalStore = create((set) => ({
   isModalOpen: false,
+  isSidebarOpen: false,
   openModal: () =>
     set((set) => ({
       isModalOpen: true,
@@ -10,4 +11,12 @@ export const modalStore = create((set) => ({
     set((set) => ({
       isModalOpen: false,
     })),
-}))
+  openSidebar: () =>
+    set((set) => ({
+      isSidebarOpen: true,
+    })),
+  closeSidebar: () =>
+    set((set) => ({
+      isSidebarOpen: false,
+    })),
+}));

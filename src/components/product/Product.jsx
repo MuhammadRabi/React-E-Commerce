@@ -3,7 +3,7 @@ import { formatPrice } from "../../utils/helpers";
 import { FaCartPlus } from "react-icons/fa";
 import useAddtoCart from "../../hooks/useAddtoCart";
 
-const Product = ({ id, name, price, image, description }) => {
+const Product = ({ id, name, price, image, description, category }) => {
   const product = { id, name, price, image };
   const { addItemToCart } = useAddtoCart(product);
 
@@ -14,15 +14,17 @@ const Product = ({ id, name, price, image, description }) => {
           <img
             src={image}
             alt={name}
-            className="object-cover w-full duration-300 h-44 hover:scale-110"
+            className="relative object-cover w-full duration-300 h-44 hover:scale-110"
           />
+          <span className="relative left-0 px-2 text-sm text-white capitalize bg-teal-600 rounded-sm -top-40">
+            {category}
+          </span>
         </Link>
         <figcaption className="px-4 py-3 text-center">
-          {
-            <h2 className="mb-2 font-bold text-teal-600 capitalize">
-              {name.substring(0, 25)}
-            </h2>
-          }
+          <h2 className="mb-2 font-bold text-teal-600 capitalize">
+            {name.substring(0, 25)}
+          </h2>
+
           <p className="mb-4 text-sm text-gray-500">
             {description.substring(0, 50)}
           </p>

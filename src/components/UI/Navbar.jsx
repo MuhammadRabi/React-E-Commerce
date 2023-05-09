@@ -2,7 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import Cart from "../cart/Cart";
 import { MdMenu } from "react-icons/md";
 import Login from "../auth/Login";
+import { modalStore } from "../../Features/modalStore";
 const Navbar = () => {
+  const openSidebar = modalStore((state) => state.openSidebar);
   return (
     <>
       <nav className="flex items-center justify-between px-10 py-3 font-bold text-white capitalize bg-teal-600">
@@ -20,11 +22,13 @@ const Navbar = () => {
             <NavLink to="/about">About</NavLink>
           </li>
         </ul>
-        <Cart />
-        <span className="block text-5xl cursor-pointer lg:hidden">
-          <MdMenu />
-        </span>
-        <Login />
+        <div className="flex">
+          <Cart />
+          <Login />
+          <span className="block ml-4 text-5xl cursor-pointer lg:hidden">
+            <MdMenu onClick={() => openSidebar()} />
+          </span>
+        </div>
       </nav>
     </>
   );
