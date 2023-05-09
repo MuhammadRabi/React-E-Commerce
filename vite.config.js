@@ -7,6 +7,9 @@ export default defineConfig({
   esbuild: {
     loader: "jsx",
   },
+  server: {
+    open: true,
+  },
   optimizeDeps: {
     esbuildOptions: {
       loader: {
@@ -15,4 +18,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

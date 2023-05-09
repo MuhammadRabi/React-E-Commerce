@@ -61,8 +61,8 @@ const Footer = () => {
           </div>
         </FooterColumn>
       </div>
-      <hr className="mx-4 my-6 " />
-      <p className="py-2 text-sm text-center capitalize text-slate-300 ">
+      <hr className="mx-4 my-6" />
+      <p className="py-2 text-xs text-center capitalize text-slate-300 ">
         © 2023 Made With Rabi for eductaional purposes
       </p>
     </footer>
