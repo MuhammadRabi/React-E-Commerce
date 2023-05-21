@@ -19,7 +19,7 @@ body{
 }
 
 nav ul a.active{
-    color:#ddd;
+    @apply bg-gradient-to-r from-orange-600 to-pink-800
 }
 .nav-center{
     width: 90vw;
@@ -82,4 +82,16 @@ nav ul a.active{
     100% {
         transform: translateY(0);
     }
+}
+
+
+
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
+
+.bg-main{
+  @apply  bg-gradient-to-r from-cyan-700 to-teal-600
 }

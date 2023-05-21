@@ -19,8 +19,8 @@ const FilterProducts = ({
   const allCompanies = [...new Set(productsList.map((c) => c.company))];
 
   return (
-    <aside className="hidden col-span-2 row-span-1 row-start-1 bg-white border-2 rounded-lg lg:block border-zinc-50">
-      <div className="p-3 text-xl font-medium text-white capitalize bg-teal-600 rounded-t-lg">
+    <aside className="hidden h-[500px] col-span-2 bg-white border-2 rounded-lg lg:block border-zinc-50">
+      <div className="p-3 text-xl font-medium text-white capitalize rounded-t-lg bg-main">
         categories
       </div>
       <div className="flex justify-between p-4 capitalize">

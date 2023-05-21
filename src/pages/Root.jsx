@@ -9,6 +9,7 @@ import { modalStore } from "../Features/modalStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import ScrollTop from "../components/UI/ScrollTop";
+import Cart from "../components/cart/Cart";
 
 const Root = () => {
   const isModalOpen = modalStore((state) => state.isModalOpen);
@@ -27,6 +28,7 @@ const Root = () => {
       {isModalOpen && <Modal />}
       <Navbar />
       <Sidebar />
+      <Cart />
       <Outlet />
       <Footer />
       <ScrollTop />

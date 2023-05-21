@@ -29,7 +29,7 @@ const Promotional = () => {
             key={item.id}
             className="flex items-center px-4 mb-6 space-x-2 border-l border-l-slate-300"
           >
-            <div className="p-2 text-xl text-white bg-teal-600 rounded-lg md:text-4xl icon">
+            <div className="p-2 text-xl text-white rounded-lg bg-main md:text-4xl icon">
               {item.icon}
             </div>
             <p className="text-xl">{item.title}</p>

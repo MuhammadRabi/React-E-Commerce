@@ -1,13 +1,13 @@
-import GoHome from "../UI/GoHome"
+import { FaCartPlus } from "react-icons/fa";
 
 const EmptyCart = () => {
   return (
-    <div className="flex flex-col space-y-12 mt-40 h-[calc(100vh-330px)]">
-      <p className="text-center text-xl">
+    <div className="flex flex-col mt-24 space-y-24">
+      <p className="text-center text-xl capitalize">
         there is no items available in your cart
       </p>
-      <GoHome />
+      <FaCartPlus className="mx-auto text-9xl text-gray-300" />
     </div>
-  )
-}
-export default EmptyCart
+  );
+};
+export default EmptyCart;

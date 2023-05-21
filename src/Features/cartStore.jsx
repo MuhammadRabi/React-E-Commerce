@@ -5,6 +5,8 @@ import { persist } from "zustand/middleware";
 const store = (set) => ({
   items: [],
   cartGrandTotal: 0,
+  isCartOpen: false,
+
   // working
   addToCart: (item) => {
     set((state) => ({
@@ -15,7 +17,7 @@ const store = (set) => ({
   clearCart: () =>
     set((state) => ({
       items: [],
-      totalPrice: 0,
+      cartGrandTotal: 0,
     })),
   removeItem: (id) =>
     set((state) => ({
@@ -34,6 +36,19 @@ const store = (set) => ({
     })),
   decreaseCartGrandTotal: (price) =>
     set((state) => ({ cartGrandTotal: state.cartGrandTotal - price })),
+  openCart: () => {
+    set((set) => ({
+      isCartOpen: true,
+    })),
+      (document.body.style.overflow = "hidden"); // Disable scrolling on body
+  },
+
+  closeCart: () => {
+    set((set) => ({
+      isCartOpen: false,
+    })),
+      (document.body.style.overflow = ""); // Disable scrolling on body
+  },
 });
 
 export const cartStore = create(

@@ -8,7 +8,7 @@ const Product = ({ id, name, price, image, description, category }) => {
   const { addItemToCart } = useAddtoCart(product);
 
   return (
-    <article className="max-w-sm mx-auto border rounded-md shadow-lg bg-gray-50 border-slate-300">
+    <article className="max-w-sm mx-auto border rounded-md shadow-lg max-h-[425px] bg-gray-50 border-slate-300">
       <figure className="flex flex-col space-y-3 overflow-hidden">
         <Link to={`/products/${id}`} className="overflow-hidden cursor-pointer">
           <img
@@ -16,7 +16,7 @@ const Product = ({ id, name, price, image, description, category }) => {
             alt={name}
             className="relative object-cover w-full duration-300 h-44 hover:scale-110"
           />
-          <span className="relative left-0 px-2 text-sm text-white capitalize bg-teal-600 rounded-sm -top-40">
+          <span className="relative left-0 px-2 text-sm text-white capitalize rounded-sm bg-main -top-40">
             {category}
           </span>
         </Link>
@@ -35,7 +35,8 @@ const Product = ({ id, name, price, image, description, category }) => {
       </figure>
       <div className="flex flex-col w-full pb-4 text-center">
         <button
-          className="flex items-center px-4 py-2 mx-auto text-white duration-300 bg-teal-500 rounded-md outline-none cursor-pointer w-fit hover:bg-teal-700"
+          aria-label="add-to-cart-btn"
+          className="flex items-center px-4 py-2 mx-auto text-white duration-300 rounded-md outline-none cursor-pointer bg-main w-fit hover:to-teal-500"
           onClick={() => addItemToCart(product)}
         >
           <FaCartPlus className="text-2xl"></FaCartPlus>

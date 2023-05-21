@@ -50,7 +50,7 @@ const ProductDetails = ({
         {stock > 0 && (
           <div className="">
             <button
-              className="flex items-center px-4 py-2 mt-5 text-white duration-300 bg-teal-600 rounded-md outline-none hover:bg-teal-700"
+              className="flex items-center px-4 py-2 mt-5 text-white duration-300 rounded-md outline-none bg-main hover:to-teal-400"
               onClick={() => addItemToCart(product)}
             >
               <FaCartPlus className="mr-3 text-2xl" />

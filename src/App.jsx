@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   Route,
 } from "react-router-dom";
-import CartPage from "./pages/CartPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -19,7 +18,6 @@ const App = () => {
       <>
         <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
           <Route index element={<HomePage />} />
-          <Route path="cart" element={<CartPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:id" element={<ProductDetailPage />} />
           <Route path="test" element={<TestPage />} />

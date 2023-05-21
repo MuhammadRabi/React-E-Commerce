@@ -11,12 +11,16 @@ export const modalStore = create((set) => ({
     set((set) => ({
       isModalOpen: false,
     })),
-  openSidebar: () =>
+  openSidebar: () => {
     set((set) => ({
       isSidebarOpen: true,
     })),
-  closeSidebar: () =>
+      (document.body.style.overflow = "hidden");
+  },
+  closeSidebar: () => {
     set((set) => ({
       isSidebarOpen: false,
     })),
+      (document.body.style.overflow = "");
+  },
 }));
