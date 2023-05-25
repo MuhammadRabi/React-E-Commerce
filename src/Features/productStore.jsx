@@ -5,6 +5,7 @@ const store = (set) => ({
   productsList: [],
   featuredProducts: [],
   isLoading: true,
+  wishlist: [],
 
   // fetching data
   getProducts: async () => {
@@ -21,6 +22,25 @@ const store = (set) => ({
       console.log(error);
     }
   },
+  // testing ...
+  addTowishlist: (item) =>
+    set((state) => {
+      const existingItem = state.wishlist.some(
+        (product) => product.id === item.id
+      );
+
+      if (!existingItem) {
+        return {
+          wishlist: [...state.wishlist, item],
+        };
+      }
+
+      return state;
+    }),
+  removeFromWishlist: (id) =>
+    set((state) => ({
+      wishlist: state.wishlist.filter((item) => item.id !== id),
+    })),
 });
 
 const productStore = create(devtools(store));
