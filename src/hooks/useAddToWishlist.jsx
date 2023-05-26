@@ -1,11 +1,11 @@
 import { useState } from "react";
-import productStore from "../Features/productStore";
 import { toast } from "react-toastify";
+import wishlistStore from "../Features/wishlistStore";
 
 const useAddToWishList = (product) => {
-  const addtowishlist = productStore((state) => state.addTowishlist);
-  const wishlist = productStore((state) => state.wishlist);
-  const removeFromWishlist = productStore((state) => state.removeFromWishlist);
+  const addtowishlist = wishlistStore((state) => state.addTowishlist);
+  const wishlist = wishlistStore((state) => state.wishlist);
+  const removeFromWishlist = wishlistStore((state) => state.removeFromWishlist);
 
   const isOnWishlist = (productId) =>
     wishlist.find((item) => item.id === productId);

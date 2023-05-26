@@ -1,13 +1,13 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { cartStore } from "../../Features/cartStore";
 import { AiOutlineHeart } from "react-icons/ai";
-import productStore from "../../Features/productStore";
 import { modalStore } from "../../Features/modalStore";
+import wishlistStore from "../../Features/wishlistStore";
 
 const CartIcon = () => {
   const itemsInCart = cartStore((state) => state.items);
   const openCart = cartStore((state) => state.openCart);
-  const wishlist = productStore((state) => state.wishlist);
+  const wishlist = wishlistStore((state) => state.wishlist);
   const openModal = modalStore((state) => state.openModal);
   return (
     <div className="hidden px-4 py-1 rounded-full cursor-pointer lg:block md:px-8">

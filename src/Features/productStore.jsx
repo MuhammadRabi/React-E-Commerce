@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-const store = (set) => ({
+const products = (set) => ({
   productsList: [],
   featuredProducts: [],
   isLoading: true,
-  wishlist: [],
+  // wishlist: [],
 
   // fetching data
   getProducts: async () => {
@@ -23,26 +23,26 @@ const store = (set) => ({
     }
   },
   // testing ...
-  addTowishlist: (item) =>
-    set((state) => {
-      const existingItem = state.wishlist.some(
-        (product) => product.id === item.id
-      );
+  // addTowishlist: (item) =>
+  //   set((state) => {
+  //     const existingItem = state.wishlist.some(
+  //       (product) => product.id === item.id
+  //     );
 
-      if (!existingItem) {
-        return {
-          wishlist: [...state.wishlist, item],
-        };
-      }
+  //     if (!existingItem) {
+  //       return {
+  //         wishlist: [...state.wishlist, item],
+  //       };
+  //     }
 
-      return state;
-    }),
-  removeFromWishlist: (id) =>
-    set((state) => ({
-      wishlist: state.wishlist.filter((item) => item.id !== id),
-    })),
+  //     return state;
+  //   }),
+  // removeFromWishlist: (id) =>
+  //   set((state) => ({
+  //     wishlist: state.wishlist.filter((item) => item.id !== id),
+  //   })),
 });
 
-const productStore = create(devtools(store));
+const productStore = create(devtools(products));
 
 export default productStore;
