@@ -5,12 +5,15 @@ import Login from "../auth/Login";
 import { modalStore } from "../../Features/modalStore";
 const Navbar = () => {
   const openSidebar = modalStore((state) => state.openSidebar);
+  const openModal = modalStore((state) => state.openModal);
   return (
     <>
-      <nav className="flex items-center justify-between px-10 py-3 font-bold text-white capitalize bg-main">
-        <h3 className="px-4 text-xl md:text-2xl">
-          <Link to="/">LOGO</Link>
-        </h3>
+      <nav className="flex items-center justify-between px-10 py-3 font-bold text-white capitalize horizontal-nav bg-main">
+        <Link to="/">
+          <h3 className="px-4 text-xl font-bold md:text-3xl">
+            Market<span className="text-cyan-400">H</span>ub
+          </h3>
+        </Link>
         <ul className="justify-center flex-1 hidden space-x-4 lg:flex">
           <li>
             <NavLink to="/" className="p-2 rounded-md">
@@ -32,7 +35,12 @@ const Navbar = () => {
           <CartIcon />
           <Login />
           <span className="block ml-4 text-5xl cursor-pointer lg:hidden">
-            <MdMenu onClick={() => openSidebar()} />
+            <MdMenu
+              onClick={() => {
+                openSidebar();
+                openModal();
+              }}
+            />
           </span>
         </div>
       </nav>

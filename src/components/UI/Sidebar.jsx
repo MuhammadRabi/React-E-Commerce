@@ -6,11 +6,13 @@ import { modalStore } from "../../Features/modalStore";
 const Sidebar = () => {
   const isSidebarOpen = modalStore((state) => state.isSidebarOpen);
   const closeSidebar = modalStore((state) => state.closeSidebar);
+  const closeModal = modalStore((state) => state.closeModal);
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     closeSidebar();
+    closeModal();
   }, [pathname]);
 
   const navLinkStyle = ({ isActive }) => {
@@ -27,7 +29,10 @@ const Sidebar = () => {
       <div className="absolute top-6 right-12 menu-toggle">
         <FaRegWindowClose
           className="text-3xl cursor-pointer"
-          onClick={() => closeSidebar()}
+          onClick={() => {
+            closeSidebar();
+            closeModal();
+          }}
         />
       </div>
       <ul className="flex flex-col items-center justify-around space-y-6 text-3xl">

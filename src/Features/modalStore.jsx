@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const modalStore = create((set) => ({
   isModalOpen: false,
   isSidebarOpen: false,
+  isConfirmationOpen: false,
   openModal: () =>
     set((set) => ({
       isModalOpen: true,
@@ -22,5 +23,15 @@ export const modalStore = create((set) => ({
       isSidebarOpen: false,
     })),
       (document.body.style.overflow = "");
+  },
+  closeConfirmation: () => {
+    set((set) => ({
+      isConfirmationOpen: false,
+    }));
+  },
+  openConfirmation: () => {
+    set((set) => ({
+      isConfirmationOpen: true,
+    }));
   },
 }));
