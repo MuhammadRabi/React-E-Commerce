@@ -8,7 +8,7 @@ const Navbar = () => {
   const openModal = useModalStore((state) => state.openModal);
   return (
     <>
-      <nav className="flex items-center justify-between px-10 py-3 font-bold text-white capitalize horizontal-nav bg-main">
+      <nav className="flex items-center justify-between px-4 py-3 font-bold text-white capitalize sm:px-10 horizontal-nav bg-main">
         <Link to="/">
           <h3 className="px-4 text-xl font-bold md:text-3xl">
             Market<span className="text-cyan-400">H</span>ub

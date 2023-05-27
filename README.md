@@ -38,10 +38,10 @@ npm run dev
 
 - Vite
 - TailwindCSS
-- Redux-toolkit
+- Zustand
 - React Router
 - React Hooks
-- Framer Motion
+
 
 ## Contributing
 
