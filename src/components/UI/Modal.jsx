@@ -1,13 +1,13 @@
-import { cartStore } from "../../Features/cartStore";
-import { modalStore } from "../../Features/modalStore";
+import { useCartStore } from "../../Features/cartStore";
+import { useModalStore } from "../../Features/modalStore";
 import Overlay from "./Overlay";
 
 const Modal = () => {
-  const closeCart = cartStore((state) => state.closeCart);
-  const clearCart = cartStore((state) => state.clearCart);
-  const closeModal = modalStore((state) => state.closeModal);
-  const isConfirmationOpen = modalStore((state) => state.isConfirmationOpen);
-  const closeConfirmation = modalStore((state) => state.closeConfirmation);
+  const closeCart = useCartStore((state) => state.closeCart);
+  const clearCart = useCartStore((state) => state.clearCart);
+  const closeModal = useModalStore((state) => state.closeModal);
+  const isConfirmationOpen = useModalStore((state) => state.isConfirmationOpen);
+  const closeConfirmation = useModalStore((state) => state.closeConfirmation);
 
   return (
     <Overlay>

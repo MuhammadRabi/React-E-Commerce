@@ -1,10 +1,9 @@
 import Product from "./Product";
-import productStore from "../../Features/productStore";
+import { useProductStore } from "../../Features/productStore";
 import ProductSkeleton from "./ProductSkeleton";
 
 const ProductsContainer = ({ tempProducts }) => {
-  const isLoading = productStore((state) => state.isLoading);
-
+  const isLoading = useProductStore((state) => state.isLoading);
   return (
     <>
       <section className="grid justify-center auto-rows-auto col-span-full lg:col-span-6 md:grid-cols-2 xl:grid-cols-3 gap-9">

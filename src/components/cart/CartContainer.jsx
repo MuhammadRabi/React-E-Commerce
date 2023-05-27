@@ -1,15 +1,15 @@
 import CartItem from "./CartItem";
 import CartFooter from "./CartFooter";
 import { useLocation } from "react-router-dom";
-import { cartStore } from "../../Features/cartStore";
+import { useCartStore } from "../../Features/cartStore";
 import { useEffect } from "react";
 import EmptyCart from "./EmptyCart";
 import CartHeader from "./CartHeader";
 
 const CartContainer = () => {
-  const items = cartStore((state) => state.items);
-  const isCartOpen = cartStore((state) => state.isCartOpen);
-  const closeCart = cartStore((state) => state.closeCart);
+  const items = useCartStore((state) => state.items);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const closeCart = useCartStore((state) => state.closeCart);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const CartContainer = () => {
         isCartOpen ? "right-0" : "-right-full"
       }`}
     >
-      <article className="h-screen flex flex-col overflow-y-scroll rounded-md mx-auto md:p-4 bg-slate-100 w-full max-w-5xl lg:p-8">
+      <article className="flex flex-col w-full h-screen max-w-5xl mx-auto overflow-y-scroll rounded-md md:p-4 bg-slate-100 lg:p-8">
         <CartHeader />
         {!items.length && <EmptyCart />}
 

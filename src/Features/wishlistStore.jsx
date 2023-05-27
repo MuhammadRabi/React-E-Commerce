@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 const wishlist = (set) => ({
   isWishlistOpen: false,
@@ -33,6 +33,6 @@ const wishlist = (set) => ({
     })),
 });
 
-const wishlistStore = create(devtools(wishlist));
-
-export default wishlistStore;
+export const useWishlistStore = create(
+  persist(devtools(wishlist), { name: "wishlistStore" })
+);

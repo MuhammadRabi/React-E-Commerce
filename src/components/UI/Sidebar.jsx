@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaRegWindowClose } from "react-icons/fa";
-import { modalStore } from "../../Features/modalStore";
+import { useModalStore } from "../../Features/modalStore";
 
 const Sidebar = () => {
-  const isSidebarOpen = modalStore((state) => state.isSidebarOpen);
-  const closeSidebar = modalStore((state) => state.closeSidebar);
-  const closeModal = modalStore((state) => state.closeModal);
+  const isSidebarOpen = useModalStore((state) => state.isSidebarOpen);
+  const closeSidebar = useModalStore((state) => state.closeSidebar);
+  const closeModal = useModalStore((state) => state.closeModal);
 
   const { pathname } = useLocation();
 

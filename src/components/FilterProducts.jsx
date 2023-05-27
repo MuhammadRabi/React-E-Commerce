@@ -1,4 +1,4 @@
-import productStore from "../Features/productStore";
+import { useProductStore } from "../Features/productStore";
 
 const FilterProducts = ({
   selectedCategoryItem,
@@ -9,12 +9,11 @@ const FilterProducts = ({
   const onCategoryChange = (item) => {
     setSelectedCategoryItem([...selectedCategoryItem, item]);
   };
-
   const onCompanyChange = (item) => {
     setSelectedCompanyItem([...selectedCompanyItem, item]);
   };
 
-  const productsList = productStore((state) => state.productsList);
+  const productsList = useProductStore((state) => state.productsList);
   const allCategories = [...new Set(productsList.map((c) => c.category))];
   const allCompanies = [...new Set(productsList.map((c) => c.company))];
 

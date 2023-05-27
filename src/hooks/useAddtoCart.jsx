@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-import { cartStore } from "../Features/cartStore";
+import { useCartStore } from "../Features/cartStore";
 
 const useAddtoCart = (product) => {
-  const addToCart = cartStore((state) => state.addToCart);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const addItemToCart = (product) => {
     addToCart(product);

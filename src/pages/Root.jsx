@@ -4,16 +4,16 @@ import Sidebar from "../components/UI/Sidebar";
 import Footer from "../components/footer/Footer";
 import Modal from "../components/UI/Modal";
 import { useEffect } from "react";
-import productStore from "../Features/productStore";
-import { modalStore } from "../Features/modalStore";
+import { useProductStore } from "../Features/productStore";
+import { useModalStore } from "../Features/modalStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import ScrollTop from "../components/UI/ScrollTop";
 import Cart from "../components/cart/Cart";
 
 const Root = () => {
-  const isModalOpen = modalStore((state) => state.isModalOpen);
-  const { getProducts } = productStore((state) => ({
+  const isModalOpen = useModalStore((state) => state.isModalOpen);
+  const { getProducts } = useProductStore((state) => ({
     sort: state.sort,
     getProducts: state.getProducts,
     updateSort: state.updateSort,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { cartStore } from "../../Features/cartStore";
+import { useCartStore } from "../../Features/cartStore";
 import { formatPrice } from "../../utils/helpers";
 import QuantityCounter from "./QuantityCounter";
 import { BsCartDashFill } from "react-icons/bs";
@@ -8,13 +8,13 @@ import { BsCartDashFill } from "react-icons/bs";
 const CartItem = ({ id, name, price, amount, image }) => {
   const [itemSubTotal, setItemSubTotal] = useState(price);
 
-  const increaseCartGrandTotal = cartStore(
+  const increaseCartGrandTotal = useCartStore(
     (state) => state.increaseCartGrandTotal
   );
-  const decreaseCartGrandTotal = cartStore(
+  const decreaseCartGrandTotal = useCartStore(
     (state) => state.decreaseCartGrandTotal
   );
-  const removeItem = cartStore((state) => state.removeItem);
+  const removeItem = useCartStore((state) => state.removeItem);
 
   const quantityIncrease = () => {
     setItemSubTotal(itemSubTotal + price);

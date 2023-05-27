@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import { persist } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 const store = (set) => ({
   items: [],
@@ -9,9 +8,18 @@ const store = (set) => ({
 
   // working
   addToCart: (item) => {
-    set((state) => ({
-      items: [...state.items, item],
-    }));
+    set((state) => {
+      const existingProduct = state.items.some(
+        (product) => product.id === item.id
+      );
+      if (!existingProduct) {
+        return {
+          items: [...state.items, item],
+        };
+      }
+
+      return state;
+    });
   },
   // working
   clearCart: () =>
@@ -51,6 +59,6 @@ const store = (set) => ({
   },
 });
 
-export const cartStore = create(
+export const useCartStore = create(
   persist(devtools(store), { name: "cartStore" })
 );

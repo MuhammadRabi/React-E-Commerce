@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import productStore from "../Features/productStore";
+import { useProductStore } from "../Features/productStore";
 
 const useFilterProducts = () => {
-  const productsList = productStore((state) => state.productsList);
+  const productsList = useProductStore((state) => state.productsList);
   const [containerData, setcontainerData] = useState(productsList);
   const [selectedCategoryItem, setSelectedCategoryItem] = useState([]);
   const [selectedCompanyItem, setSelectedCompanyItem] = useState([]);
-
   const categoryFilter = () => {
     let results = [...productsList];
     let filteredCategoryResult;

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import CartContainer from "./CartContainer";
-import { cartStore } from "../../Features/cartStore";
+import { useCartStore } from "../../Features/cartStore";
 
 const Cart = () => {
-  const itemsInCart = cartStore((state) => state.items);
-  const setCartGrandTotal = cartStore((state) => state.setCartGrandTotal);
+  const itemsInCart = useCartStore((state) => state.items);
+  const setCartGrandTotal = useCartStore((state) => state.setCartGrandTotal);
 
   const calculateGrandTotal = () => {
     const grandTotal = itemsInCart

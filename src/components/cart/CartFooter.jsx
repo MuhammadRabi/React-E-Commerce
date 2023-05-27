@@ -1,15 +1,15 @@
-import { cartStore } from "../../Features/cartStore";
-import { modalStore } from "../../Features/modalStore";
+import { useCartStore } from "../../Features/cartStore";
+import { useModalStore } from "../../Features/modalStore";
 import { formatPrice } from "../../utils/helpers";
 
 const CartFooter = () => {
-  const items = cartStore((state) => state.items);
-  const cartGrandTotal = cartStore((state) => state.cartGrandTotal);
-  const closeCart = cartStore((state) => state.closeCart);
-  const openModal = modalStore((state) => state.openModal);
-  const closeModal = modalStore((state) => state.closeModal);
-  const openConfirmation = modalStore((state) => state.openConfirmation);
-  const closeConfirmation = modalStore((state) => state.closeConfirmation);
+  const items = useCartStore((state) => state.items);
+  const cartGrandTotal = useCartStore((state) => state.cartGrandTotal);
+  const closeCart = useCartStore((state) => state.closeCart);
+  const openModal = useModalStore((state) => state.openModal);
+  const closeModal = useModalStore((state) => state.closeModal);
+  const openConfirmation = useModalStore((state) => state.openConfirmation);
+  const closeConfirmation = useModalStore((state) => state.closeConfirmation);
   return (
     <>
       <div className="px-4 pt-3">

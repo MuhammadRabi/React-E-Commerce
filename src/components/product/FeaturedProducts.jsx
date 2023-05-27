@@ -1,11 +1,11 @@
-import productStore from "../../Features/productStore";
+import { useProductStore } from "../../Features/productStore";
 import SectionHeadline from "../UI/SectionHeadline";
 import Product from "./Product";
 import ProductSkeleton from "./ProductSkeleton";
 
 const FeaturedProducts = () => {
-  const featuredProducts = productStore((state) => state.featuredProducts);
-  const isLoading = productStore((state) => state.isLoading);
+  const featuredProducts = useProductStore((state) => state.featuredProducts);
+  const isLoading = useProductStore((state) => state.isLoading);
 
   return (
     <>

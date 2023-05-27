@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const modalStore = create((set) => ({
+export const useModalStore = create((set) => ({
   isModalOpen: false,
   isSidebarOpen: false,
   isConfirmationOpen: false,

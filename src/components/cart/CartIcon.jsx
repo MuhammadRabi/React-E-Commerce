@@ -1,14 +1,14 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { cartStore } from "../../Features/cartStore";
+import { useCartStore } from "../../Features/cartStore";
 import { AiOutlineHeart } from "react-icons/ai";
-import { modalStore } from "../../Features/modalStore";
-import wishlistStore from "../../Features/wishlistStore";
+import { useModalStore } from "../../Features/modalStore";
+import { useWishlistStore } from "../../Features/wishlistStore";
 
 const CartIcon = () => {
-  const itemsInCart = cartStore((state) => state.items);
-  const openCart = cartStore((state) => state.openCart);
-  const wishlist = wishlistStore((state) => state.wishlist);
-  const openModal = modalStore((state) => state.openModal);
+  const itemsInCart = useCartStore((state) => state.items);
+  const openCart = useCartStore((state) => state.openCart);
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const openModal = useModalStore((state) => state.openModal);
   return (
     <div className="hidden px-4 py-1 rounded-full cursor-pointer lg:block md:px-8">
       <div className="flex space-x-6 text-3xl duration-75">
