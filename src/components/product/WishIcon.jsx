@@ -1,10 +1,9 @@
 import React from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import useAddToWishList from "../../hooks/useAddToWishList";
+import { useAddtoWishlist } from "../../hooks/useAddToWishList";
 
 const WishIcon = ({ product }) => {
-  const { addItemToWishlist, isWishlistActive } = useAddToWishList(product);
-
+  const { addItemToWishlist, isWishlistActive } = useAddtoWishlist(product);
   return (
     <button
       onClick={() => addItemToWishlist(product)}

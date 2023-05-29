@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useWishlistStore } from "../Features/wishlistStore";
 
-const useAddToWishList = (product) => {
+export const useAddtoWishlist = (product) => {
   const addtowishlist = useWishlistStore((state) => state.addTowishlist);
   const wishlist = useWishlistStore((state) => state.wishlist);
   const removeFromWishlist = useWishlistStore(
@@ -32,5 +32,3 @@ const useAddToWishList = (product) => {
 
   return { addItemToWishlist, isWishlistActive };
 };
-
-export default useAddToWishList;
