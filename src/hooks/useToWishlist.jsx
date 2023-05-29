@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import React, { useState } from "react";
 import { useWishlistStore } from "../Features/wishlistStore";
+import { toast } from "react-toastify";
 
-export const useAddtoWishlist = (product) => {
+export const useToWishlist = (product) => {
   const addtowishlist = useWishlistStore((state) => state.addTowishlist);
   const wishlist = useWishlistStore((state) => state.wishlist);
   const removeFromWishlist = useWishlistStore(
