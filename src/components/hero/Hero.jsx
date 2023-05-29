@@ -7,7 +7,7 @@ const Hero = () => {
         <Overlay>
           <h1 className="p-2 mt-56 text-4xl font-bold text-white md:text-6xl bg-slate-800">
             Market
-            <span className="my-auto text-4xl text-cyan-400 md:text-8xl">
+            <span className="my-auto text-4xl text-teal-600 md:text-8xl">
               H
             </span>
             ub

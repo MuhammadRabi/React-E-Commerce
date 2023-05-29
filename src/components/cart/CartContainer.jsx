@@ -1,20 +1,12 @@
 import CartItem from "./CartItem";
 import CartFooter from "./CartFooter";
-import { useLocation } from "react-router-dom";
 import { useCartStore } from "../../Features/cartStore";
-import { useEffect } from "react";
 import EmptyCart from "./EmptyCart";
 import CartHeader from "./CartHeader";
 
 const CartContainer = () => {
   const items = useCartStore((state) => state.items);
   const isCartOpen = useCartStore((state) => state.isCartOpen);
-  const closeCart = useCartStore((state) => state.closeCart);
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    closeCart();
-  }, [pathname]);
 
   return (
     <section
