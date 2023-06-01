@@ -12,7 +12,7 @@ const CartHeader = () => {
         shopping cart ({items.length})
       </h2>
       <p
-        className="text-right duration-300 cursor-pointer hover:rotate-90 hover:scale-125"
+        className="p-2 text-right duration-300 rounded-md cursor-pointer hover:bg-slate-200 hover:scale-125"
         onClick={() => {
           closeCart();
           closeModal();
