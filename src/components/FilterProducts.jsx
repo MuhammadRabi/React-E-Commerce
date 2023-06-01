@@ -1,9 +1,6 @@
-import { useState } from "react";
-
 const FilterProducts = ({
   selectedCategoryItem,
   setSelectedCategoryItem,
-  selectedCompanyItem,
   setSelectedCompanyItem,
   allCategories,
   allCompanies,

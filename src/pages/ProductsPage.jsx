@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FilterProducts from "../components/FilterProducts";
-import SearchBar from "../components/UI/SearchBar";
+import SearchBar from "../components/SearchBar";
 import ProductsContainer from "../components/product/ProductsContainer";
 import Sort from "../components/Sort";
 import useFilterProducts from "../hooks/useFilterProducts";
