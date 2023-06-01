@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*:focus {
+    outline: none;
+}
 @layer components{
     .modal-btn{
     @apply  px-4 py-0.5 text-xl font-semibold text-center capitalize border-2 rounded-md duration-700 border-red-700 hover:text-white hover:bg-red-700 

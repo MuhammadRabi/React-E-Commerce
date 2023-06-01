@@ -24,13 +24,21 @@ const wishlist = (set) => ({
       wishlist: state.wishlist.filter((item) => item.id !== id),
     })),
   openWishlist: () =>
-    set((set) => ({
+    set((state) => ({
       isWishlistOpen: true,
     })),
   closeWishlist: () =>
-    set((set) => ({
+    set((state) => ({
       isWishlistOpen: false,
     })),
+  toggleWishlist: () =>
+    set((state) => ({
+      isWishlistOpen: !state.isWishlistOpen,
+    })),
+  clearWishlist: () =>
+    set({
+      wishlist: [],
+    }),
 });
 
 export const useWishlistStore = create(

@@ -3,6 +3,8 @@ import CartIcon from "../cart/CartIcon";
 import { MdMenu } from "react-icons/md";
 import Login from "../auth/Login";
 import { useModalStore } from "../../Features/modalStore";
+import NavIcons from "./NavIcons";
+import WishlistDropdown from "../wishlist/WishlistDropdown";
 const Navbar = () => {
   const openSidebar = useModalStore((state) => state.openSidebar);
   const openModal = useModalStore((state) => state.openModal);
@@ -32,7 +34,8 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="flex">
-          <CartIcon />
+          <NavIcons />
+          <WishlistDropdown />
           <Login />
           <span className="block ml-4 text-5xl cursor-pointer lg:hidden">
             <MdMenu

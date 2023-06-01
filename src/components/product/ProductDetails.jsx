@@ -1,9 +1,10 @@
 import ProductImages from "./ProductImages";
 import ProductRating from "./ProductRating";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 import useAddtoCart from "../../hooks/useAddtoCart";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+
 const ProductDetails = ({
   id,
   images,
@@ -48,13 +49,22 @@ const ProductDetails = ({
         </div>
         <hr />
         {stock > 0 && (
-          <div className="">
+          <div className="flex space-x-4">
             <button
               className="flex items-center px-4 py-2 mt-5 text-white duration-300 rounded-md outline-none bg-main hover:to-teal-400"
               onClick={() => addItemToCart(product)}
             >
               <FaCartPlus className="mr-3 text-2xl" />
               Add to cart
+            </button>
+            {/* experimental feature */}
+            <button
+              className="flex items-center px-4 py-2 mt-5 text-white duration-300 rounded-md outline-none bg-main hover:to-teal-400"
+              onClick={() => addItemToCart(product)}
+              disabled
+            >
+              <FaHeart className="mr-3 text-2xl" />
+              Add to wishlist
             </button>
           </div>
         )}

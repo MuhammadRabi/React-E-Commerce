@@ -5,32 +5,32 @@ export const useModalStore = create((set) => ({
   isSidebarOpen: false,
   isConfirmationOpen: false,
   openModal: () =>
-    set((set) => ({
+    set((state) => ({
       isModalOpen: true,
     })),
   closeModal: () =>
-    set((set) => ({
+    set((state) => ({
       isModalOpen: false,
     })),
   openSidebar: () => {
-    set((set) => ({
+    set((state) => ({
       isSidebarOpen: true,
     })),
       (document.body.style.overflow = "hidden");
   },
   closeSidebar: () => {
-    set((set) => ({
+    set((state) => ({
       isSidebarOpen: false,
     })),
       (document.body.style.overflow = "");
   },
   closeConfirmation: () => {
-    set((set) => ({
+    set((state) => ({
       isConfirmationOpen: false,
     }));
   },
   openConfirmation: () => {
-    set((set) => ({
+    set((state) => ({
       isConfirmationOpen: true,
     }));
   },
