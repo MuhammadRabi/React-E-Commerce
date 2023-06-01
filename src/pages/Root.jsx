@@ -13,11 +13,7 @@ import Cart from "../components/cart/Cart";
 
 const Root = () => {
   const isModalOpen = useModalStore((state) => state.isModalOpen);
-  const { getProducts } = useProductStore((state) => ({
-    sort: state.sort,
-    getProducts: state.getProducts,
-    updateSort: state.updateSort,
-  }));
+  const getProducts = useProductStore((state) => state.getProducts);
 
   useEffect(() => {
     getProducts();

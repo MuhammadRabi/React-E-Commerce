@@ -3,9 +3,12 @@ import { useProductStore } from "../Features/productStore";
 
 const useFilterProducts = () => {
   const productsList = useProductStore((state) => state.productsList);
+  const allCategories = [...new Set(productsList.map((c) => c.category))];
+  const allCompanies = [...new Set(productsList.map((c) => c.company))];
   const [containerData, setcontainerData] = useState(productsList);
-  const [selectedCategoryItem, setSelectedCategoryItem] = useState([]);
-  const [selectedCompanyItem, setSelectedCompanyItem] = useState([]);
+  const [selectedCategoryItem, setSelectedCategoryItem] = useState(null);
+  const [selectedCompanyItem, setSelectedCompanyItem] = useState(null);
+
   const categoryFilter = () => {
     let results = [...productsList];
     let filteredCategoryResult;
@@ -34,13 +37,15 @@ const useFilterProducts = () => {
     }
   };
 
+  const removeFilter = () => {
+    setSelectedCategoryItem(null);
+    setSelectedCompanyItem(null);
+    setcontainerData(productsList);
+  };
+
   useEffect(() => {
-    if (selectedCategoryItem.length > 0) {
-      categoryFilter();
-    }
-    if (selectedCompanyItem.length > 0) {
-      companyFilter();
-    }
+    categoryFilter();
+    companyFilter();
   }, [selectedCategoryItem, selectedCompanyItem]);
 
   return {
@@ -49,8 +54,9 @@ const useFilterProducts = () => {
     setSelectedCategoryItem,
     selectedCompanyItem,
     setSelectedCompanyItem,
-    categoryFilter,
-    companyFilter,
+    allCategories,
+    allCompanies,
+    removeFilter,
   };
 };
 

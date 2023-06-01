@@ -15,6 +15,9 @@ const ProductsPage = () => {
     setSelectedCompanyItem,
     selectedCompanyItem,
     containerData,
+    allCategories,
+    allCompanies,
+    removeFilter,
   } = useFilterProducts();
 
   // sorting
@@ -62,7 +65,9 @@ const ProductsPage = () => {
           setSelectedCategoryItem={setSelectedCategoryItem}
           selectedCompanyItem={selectedCompanyItem}
           setSelectedCompanyItem={setSelectedCompanyItem}
-          /*  clearFilters={clearFilters}*/
+          allCategories={allCategories}
+          allCompanies={allCompanies}
+          removeFilter={removeFilter}
         />
         <ProductsContainer tempProducts={tempProducts} />
       </div>

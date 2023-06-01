@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+// import { appData } from "../utils/data";
 
 const products = (set) => ({
+  // productsList: appData, at development
   productsList: [],
   featuredProducts: [],
   isLoading: true,
 
-  // fetching data
+  //fetching data
   getProducts: async () => {
     const url = "https://course-api.com/react-store-products";
     try {

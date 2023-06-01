@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between px-4 py-3 font-bold text-white capitalize sm:px-10 horizontal-nav bg-main">
         <Link to="/">
           <h3 className="px-4 text-xl font-bold md:text-3xl">
-            Market<span className="text-cyan-400">H</span>ub
+            Market<span className="text-teal-600">H</span>ub
           </h3>
         </Link>
         <ul className="justify-center flex-1 hidden space-x-4 lg:flex">
