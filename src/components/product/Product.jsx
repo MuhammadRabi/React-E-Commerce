@@ -9,7 +9,7 @@ const Product = ({ id, name, price, image, description, category }) => {
   const product = { id, name, price, image };
   const { addItemToCart } = useAddtoCart(product);
   return (
-    <article className="max-w-sm mx-auto border rounded-md shadow-lg max-h-[425px] bg-gray-50 border-slate-300">
+    <article className="max-w-sm mx-auto border rounded-md shadow-lg h-fit bg-gray-50 border-slate-300">
       <figure className="relative flex flex-col space-y-3 overflow-hidden">
         <Link to={`/products/${id}`} className="overflow-hidden cursor-pointer">
           <img

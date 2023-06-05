@@ -42,6 +42,7 @@ const WishlistDropdown = () => {
           className="px-2 py-1 mx-auto mt-4 text-sm text-center text-white capitalize duration-300 rounded-md cursor-pointer hover:scale-105 w-fit bg-main"
           onClick={() => clearWishlist()}
           type="clear"
+          aria-label="clear-wishlist"
         >
           clear wishlist
         </button>
