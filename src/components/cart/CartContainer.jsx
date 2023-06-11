@@ -1,12 +1,12 @@
-import CartItem from "./CartItem";
-import CartFooter from "./CartFooter";
-import { useCartStore } from "../../Features/cartStore";
-import EmptyCart from "./EmptyCart";
-import CartHeader from "./CartHeader";
+import CartItem from "./CartItem"
+import CartFooter from "./CartFooter"
+import { useCartStore } from "../../Features/cartStore"
+import EmptyCart from "./EmptyCart"
+import CartHeader from "./CartHeader"
 
 const CartContainer = () => {
-  const items = useCartStore((state) => state.items);
-  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const items = useCartStore((state) => state.items)
+  const isCartOpen = useCartStore((state) => state.isCartOpen)
 
   return (
     <section
@@ -19,11 +19,11 @@ const CartContainer = () => {
         {!items.length && <EmptyCart />}
 
         {items.map((item) => {
-          return <CartItem key={item.id} {...item} />;
+          return <CartItem key={item.id} {...item} />
         })}
         <CartFooter />
       </article>
     </section>
-  );
-};
-export default CartContainer;
+  )
+}
+export default CartContainer
