@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
-import { FaSignInAlt } from "react-icons/fa";
-const Login = () => {
-  return (
-    <div className="flex items-center justify-between space-x-2 cursor-pointer ">
-      <FaSignInAlt className="text-xl" />
-      <Link to="auth">
-        <p>login </p>
-      </Link>
-    </div>
-  );
-};
+import { FaUser } from "react-icons/fa"
+import { useAuth0 } from "@auth0/auth0-react"
 
-export default Login;
+const Login = () => {
+  const { loginWithRedirect } = useAuth0()
+  return (
+    <button
+      className="flex items-center cursor-pointer"
+      onClick={() => loginWithRedirect()}
+    >
+      <FaUser className="text-2xl" />
+    </button>
+  )
+}
+
+export default Login
