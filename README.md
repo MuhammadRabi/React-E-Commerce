@@ -10,7 +10,8 @@ The app consists of few pages
 - functional Shopping Cart
 - Products fitlering mechanism
 - multi pages with dynamic routing
-- .....
+- functional wishlist
+- authentication
 
 ## How To Use
 
@@ -22,10 +23,10 @@ To be able to use this react app locally in a development environment you will n
 
 ```cmd
 # Clone this repository
-git clone REPO_URL
+git clone https://github.com/MuhammadRabi/React-E-Commerce.git
 
 # Go into the repository
-cd REPO_NAME
+cd React-E-Commerce
 
 # Install dependencies
 npm install
@@ -41,6 +42,8 @@ npm run dev
 - Zustand
 - React Router
 - React Hooks
+- auth0
+- react-toastify
 
 
 ## Contributing
