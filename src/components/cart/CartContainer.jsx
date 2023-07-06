@@ -14,7 +14,7 @@ const CartContainer = () => {
         isCartOpen ? "right-0" : "-right-full"
       }`}
     >
-      <article className="flex flex-col w-full h-screen max-w-5xl mx-auto overflow-y-scroll rounded-md md:p-4 bg-slate-100 lg:p-8">
+      <article className="flex flex-col w-full h-screen max-w-5xl py-4 mx-auto overflow-y-scroll rounded-md md:p-8 bg-slate-100 lg:px-8">
         <CartHeader />
         {!items.length && <EmptyCart />}
 

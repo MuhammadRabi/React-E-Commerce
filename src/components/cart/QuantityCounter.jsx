@@ -1,31 +1,31 @@
-import { useState } from "react";
-import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
+import { useState } from "react"
+import { FiPlusSquare, FiMinusSquare } from "react-icons/fi"
 
 const QuantityCounter = ({ onIncreaseBtn, onDecreaseBtn }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1)
 
   const increase = () => {
-    setQuantity((prev) => prev + 1);
-    onIncreaseBtn();
-  };
+    setQuantity((prev) => prev + 1)
+    onIncreaseBtn()
+  }
   const decrease = () => {
     if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-      onDecreaseBtn();
+      setQuantity((prev) => prev - 1)
+      onDecreaseBtn()
     }
-  };
+  }
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center justify-center space-x-2 border border-red-400">
       <span
         className="text-green-500 hover:text-green-700 text-[24px] sm:text-[24px] cursor-pointer duration-500"
         onClick={increase}
       >
         <FiPlusSquare />
       </span>
-      <p className="flex items-center justify-center w-6 h-6 border-2 border-gray-300 rounded-sm text-slate-800">
+      <span className="flex items-center justify-center w-6 h-6 border-2 border-gray-300 rounded-sm text-slate-800">
         {quantity}
-      </p>
+      </span>
       <span
         className="text-red-500 hover:text-red-700 text-[24px] sm:text-[24px] cursor-pointer duration-500"
         onClick={decrease}
@@ -33,6 +33,6 @@ const QuantityCounter = ({ onIncreaseBtn, onDecreaseBtn }) => {
         <FiMinusSquare />
       </span>
     </div>
-  );
-};
-export default QuantityCounter;
+  )
+}
+export default QuantityCounter
