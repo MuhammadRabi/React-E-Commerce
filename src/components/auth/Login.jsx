@@ -6,6 +6,7 @@ const Login = () => {
   return (
     <button
       className="flex items-center cursor-pointer"
+      aria-label="login-button"
       onClick={() => loginWithRedirect()}
     >
       <FaUser className="text-2xl" />
