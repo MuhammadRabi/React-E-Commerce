@@ -37,7 +37,7 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-        <div className="flex">
+        <div className="flex items-center">
           <NavIcons />
           <WishlistDropdown />
           {isAuthenticated ? <Avatar user={user} /> : <Login />}

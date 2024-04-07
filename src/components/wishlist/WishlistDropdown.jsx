@@ -1,30 +1,30 @@
-import { useEffect } from "react";
-import { useWishlistStore } from "../../Features/wishlistStore";
-import { useLocation } from "react-router-dom";
-import EmptyWishlist from "./EmptyWishlist";
-import WishItem from "./WishItem";
+import { useEffect } from "react"
+import { useWishlistStore } from "../../Features/wishlistStore"
+import { useLocation } from "react-router-dom"
+import EmptyWishlist from "./EmptyWishlist"
+import WishItem from "./WishItem"
 
 const WishlistDropdown = () => {
-  const wishlistItems = useWishlistStore((state) => state.wishlist);
-  const clearWishlist = useWishlistStore((state) => state.clearWishlist);
-  const isWishlistOpen = useWishlistStore((state) => state.isWishlistOpen);
-  const closeWishlist = useWishlistStore((state) => state.closeWishlist);
+  const wishlistItems = useWishlistStore((state) => state.wishlist)
+  const clearWishlist = useWishlistStore((state) => state.clearWishlist)
+  const isWishlistOpen = useWishlistStore((state) => state.isWishlistOpen)
+  const closeWishlist = useWishlistStore((state) => state.closeWishlist)
   const removeFromWishlist = useWishlistStore(
     (state) => state.removeFromWishlist
-  );
+  )
 
   //closing wishlist when visiting anotehr page
 
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
   useEffect(() => {
-    closeWishlist();
-  }, [pathname]);
+    closeWishlist()
+  }, [pathname])
 
   return (
     <article
       className={`absolute z-30 flex w-64 top-12 flex-col justify-between ${
         !isWishlistOpen ? "opacity-0" : ""
-      } p-4 py-8 text-gray-800 duration-700 rounded-md right-48 bg-slate-100`}
+      } p-4 py-8 text-gray-800 duration-700 rounded-md right-12 bg-slate-100`}
     >
       <h2 className="mb-6">wishlist ({wishlistItems.length})</h2>
       {wishlistItems.length > 0 ? (
@@ -48,7 +48,7 @@ const WishlistDropdown = () => {
         </button>
       )}
     </article>
-  );
-};
+  )
+}
 
-export default WishlistDropdown;
+export default WishlistDropdown

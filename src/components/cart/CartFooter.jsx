@@ -27,7 +27,7 @@ const CartFooter = () => {
         </>
       )}
       <div className="flex self-end justify-around my-16 text-sm">
-        <button className="p-4 text-xl capitalize duration-300 border rounded-md border-slate-400 hover:bg-black hover:text-white hover:border-black ">
+        <button className="p-2 text-sm capitalize duration-300 border rounded-md md:p-4 md:text-xl border-slate-400 hover:bg-black hover:text-white hover:border-black ">
           proceed to checkout
         </button>
       </div>
